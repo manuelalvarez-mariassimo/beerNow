@@ -1,0 +1,38 @@
+const mongoose = require('mongoose');
+const Schema   = mongoose.Schema;
+
+const beerSchema = new Schema({
+    name : {
+        type: String,
+        required : true
+    },
+    country : {
+        type : String,
+        required : true
+    },
+    style : {
+        type : String,
+        required : true
+    },
+    description :  {
+        type : String,
+        required : true
+    },
+    rate:{
+        type: Number,
+        min: 0,
+        max: 5
+    },
+    Alcohol : {
+        type : Number,
+        required : true
+    },
+    Image : {
+        type: String,
+        required : true
+    },
+    comments : [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}]
+});
+
+const Beer = mongoose.model('Beer', beerSchema);
+module.exports = Beer;
