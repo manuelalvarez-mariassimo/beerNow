@@ -78,14 +78,14 @@ require('./passport')(app);
 const index = require('./routes/index');
 app.use('/', index);
 
-const bar = require('./routes/bar');
-app.use('/bars', bar);
+// const bar = require('./routes/bar');
+// app.use('/bars', bar);
 
-const beer = require('./routes/beer');
-app.use('/beers', beer);
+// const beer = require('./routes/beer');
+// app.use('/beers', beer);
 
-const bar = require('./routes/user');
-app.use('/user', user);
+// const user = require('./routes/user');
+// app.use('/user', user);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
