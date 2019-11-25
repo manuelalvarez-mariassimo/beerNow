@@ -32,8 +32,6 @@ const beerSchema = new Schema({
         required : true
     },
     comments : [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}],
-    favoriteBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
-
 });
 
 const Beer = mongoose.model('Beer', beerSchema);

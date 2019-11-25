@@ -18,7 +18,6 @@ const barSchema = new Schema({
   },
   images : [String],
   comments : [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}], 
-  favoriteBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 
 const Bar = mongoose.model('Bar', barSchema);
