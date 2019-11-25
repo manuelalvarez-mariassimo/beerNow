@@ -6,13 +6,7 @@ const barSchema = new Schema({
       type: String, 
       required: true
     },
-  location : {
-    "type" : "Point",
-    "coordinates" : [
-      lat,
-      lng
-    ],
-  },
+  location :  { type: { type: String }, coordinates: [Number] },
   address: {
       type: String,
       required: true
@@ -23,7 +17,8 @@ const barSchema = new Schema({
       max: 5
   },
   images : [String],
-  comments : [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}] 
+  comments : [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}], 
+  favoriteBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 
 const Bar = mongoose.model('Bar', barSchema);

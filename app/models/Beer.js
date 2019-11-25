@@ -23,15 +23,17 @@ const beerSchema = new Schema({
         min: 0,
         max: 5
     },
-    Alcohol : {
+    alcohol : {
         type : Number,
         required : true
     },
-    Image : {
+    image : {
         type: String,
         required : true
     },
-    comments : [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}]
+    comments : [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}],
+    favoriteBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+
 });
 
 const Beer = mongoose.model('Beer', beerSchema);
