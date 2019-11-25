@@ -20,12 +20,18 @@ mongoose
 
 let users = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    username: "Maria",
+    country: "Spain",
+    city: "Murcia",
+    password: bcrypt.hashSync("Maria", bcrypt.genSaltSync(bcryptSalt)),
+    email: "mariasimo@gmail.com"
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    username: "Manuee",
+    country: "Spain",
+    city: "Sevilla",
+    password: bcrypt.hashSync("Manuee", bcrypt.genSaltSync(bcryptSalt)),
+    email: "manualvarezrosado@gmail.com"
   }
 ]
 
@@ -36,10 +42,6 @@ User.deleteMany()
 .then(usersCreated => {
   console.log(`${usersCreated.length} users created with the following id:`);
   console.log(usersCreated.map(u => u._id));
-})
-.then(() => {
-  // Close properly the connection to Mongoose
-  mongoose.disconnect()
 })
 .catch(err => {
   mongoose.disconnect()
