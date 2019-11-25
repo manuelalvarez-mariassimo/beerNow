@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
-const bcryptSalt = 10;
+const bcryptSalt = 15;
 
 mongoose
   .connect(`mongodb://localhost/${process.env.DB}`, {useNewUrlParser: true})
