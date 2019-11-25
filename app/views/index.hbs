@@ -1,2 +1,27 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+This is index view
+
+<form action="/location" method="POST">
+    <input type="text" name="lat" id="lat">
+    <input type="text" name="lng" id="lng">
+    <button type="submit">Locate me</button>
+</form>
+
+
+<script>
+
+    window.onload = function () {
+        navigator.geolocation.getCurrentPosition(success, error);
+        function success(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+
+            console.log(lat, lng)
+            document.querySelector("#lat").value = lat
+            document.querySelector("#lng").value = lng
+        }
+        function error() {
+            // do something with the error message
+        }
+    };
+
+</script>
