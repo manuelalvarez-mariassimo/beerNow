@@ -81,8 +81,8 @@ app.use('/', index);
 // const bar = require('./routes/bar');
 // app.use('/bars', bar);
 
-// const beer = require('./routes/beer');
-// app.use('/beers', beer);
+const beer = require('./routes/beer');
+app.use('/beers', beer);
 
 // const user = require('./routes/user');
 // app.use('/user', user);

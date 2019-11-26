@@ -1,14 +1,18 @@
+<h3>Log in with an existing account</h3>
 
-<h2>Login</h2>
+<a href="/auth/google"><i class="fab fa-google fa-2x"></i></a>
+
+
+<h3>or login with your account</h3>
 
 <form action="/auth/login" method="POST" id="form-container">
   <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+  <input id="username" type="text" name="username" placeholder="Username">
 
   <br><br>
 
   <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
+  <input id="password" type="password" name="password" placeholder="Password">
   <br>
   {{#if message }}
     <div class="error-message">{{ message }}</div>

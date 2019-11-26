@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+
+
 body {
   padding: 24px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Poppins', sans-serif;
 }
 
 a {
@@ -16,4 +20,30 @@ input {
   height: 30px;
   border: 1px solid silver;
   border-radius: 5px;
+}
+
+
+/* ------ BEERS LIST ------ */
+.boxBeer {
+display: flex;
+border: 1px solid silver;
+height: 150px;
+}
+
+.descriptionBeer {
+  background: #f2f2f2;
+  width: 100%;
+}
+
+.descriptionBeer h2, h3, p {
+  margin-left: 15px;
+}
+
+.imgBeer  {
+  display: flex;
+  align-items: center;
+}
+
+.imgBeer img {
+  max-width: 75px;
 }
