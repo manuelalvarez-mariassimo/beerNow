@@ -163,8 +163,8 @@ return User.deleteMany()
         [
           {
             name : "Bar San Calisto",
-            location: null,
-            address : "Piazza di S. Calisto, 3, 00153",
+            location: {"type" : "Point", coordinates : [40.392904, -3.690681]},
+            address : "Calle Circonita, 15A 28045 Madrid",
             rate: 4.5,
             images : null,
             comments : [
@@ -174,8 +174,8 @@ return User.deleteMany()
           },
           {
             name : "Mr. Brown Pub",
-            location: null,
-            address : "Vicolo de' Cinque, 29",
+            location: {"type" : "Point", coordinates : [40.395378, -3.699408]},  
+            address : "Calle Aldea del Fresno, 25 28045 Madrid",
             rate: 4.5,
             images : null,
             comments : [
