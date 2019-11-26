@@ -6,9 +6,7 @@ This is index view
     <button type="submit">Locate me</button>
 </form>
 
-
 <script>
-
     window.onload = function () {
         navigator.geolocation.getCurrentPosition(success, error);
         function success(position) {
@@ -17,11 +15,12 @@ This is index view
 
             console.log(lat, lng)
             document.querySelector("#lat").value = lat
-            document.querySelector("#lng").value = lng
+            document.querySelector("#lng").value = lng            
         }
         function error() {
             // do something with the error message
         }
     };
-
 </script>
+
+
