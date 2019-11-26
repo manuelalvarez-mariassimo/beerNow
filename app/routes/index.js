@@ -1,21 +1,52 @@
 const express = require('express');
 const router  = express.Router();
-const Bar = require("../models/Bar");
-
+const Translate = require('@google-cloud/translate');
 
 // Google apis
 let apiUrl;
 let apiKey = process.env.GOOGLE_MAPS_API_KEY;
 
 
+//Google translate API
+const projectId = process.env.GOOGLE_CLOUD_PROJECT_ID;
+const location = 'global';
+const text = 'Can I have a beer, please?';
+
+const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
+
+// Instantiates a client
+const translationClient = new TranslationServiceClient();
+async function translateText(targetLanguage) {
+  
+  // Construct request
+  const request = {
+    parent: translationClient.locationPath(projectId, location),
+    contents: [text],
+    mimeType: 'text/plain', // mime types: text/plain, text/html
+    sourceLanguageCode: 'en-US',
+    targetLanguageCode: 'es-ES',
+  };
+
+  // Run request
+  const [response] = await translationClient.translateText(request);
+
+  for (const translation of response.translations) {
+    return translation.translatedText;
+  }
+}
+
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index');
+   res.render('index');
 });
 
 router.get('/results', (req, res, next) => {
-  apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-  res.render("results", {apiUrl});
+  console.log(req.params)
+  translateText().then(result => {
+    apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+    res.render("results", {apiUrl, result});
+  })
+
 });
 
 

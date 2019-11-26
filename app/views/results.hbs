@@ -1,6 +1,6 @@
 <section id="translate">
   <p id="location"></p>
-  <h1></h1>
+  <h1>{{result}}</h1>
   <p>Listen to it</p>
 </section>
 
@@ -38,7 +38,6 @@
               country = results.data.results[0].address_components[5].long_name
 
               document.querySelector("#location").innerText = `You're at ${city}, ${country}`
-              console.log(city, country)
             }
           )
 
@@ -80,8 +79,6 @@
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=bar&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
       )
       .then(barsPayload => {
-        console.log(barsPayload.data.results)
-
         barsPayload.data.results.forEach(results => {
 
           let marker = new google.maps.Marker({
