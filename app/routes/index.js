@@ -18,6 +18,11 @@ router.get('/results', (req, res, next) => {
   res.render("results", {apiUrl});
 });
 
+
+router.post("/results", (req, res, next) => {
+  console.log(req.body)
+})
+
 router.get('/landing', (req, res, next) => {
   res.render('landing');
 });
