@@ -14,6 +14,8 @@ const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
     
 
+const cors = require('cors')
+
 mongoose
   .connect(`mongodb://localhost/${process.env.DB}`, {useNewUrlParser: true})
   .then(x => {
@@ -74,6 +76,7 @@ app.use(session({
 app.use(flash());
 require('./passport')(app);
     
+app.use(cors()) // Use this after the variable declaration
 
 const index = require('./routes/index');
 app.use('/', index);

@@ -1,33 +1,36 @@
 This is index view
 
-<a href="/results">Locate me</a>
+<a href="" id="locate-button">Locate me</a>
 
 <script>
   let country;
-    function locateBrowser() {
-        if (navigator.geolocation) {
+  function locateBrowser() {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
           const user_location = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
+
+/*            lat:'55.7539303',
+            lng: '37.6186063'*/
           };
 
 
-           axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${user_location.lat},${user_location.lng}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
-          .then(results => {
-              country = results.data.results[0].address_components[5].long_name
-              console.log(country)
-            }
-          )
+          axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${user_location.lat},${user_location.lng}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+            .then(results => {
+              country = results.data.results[0].address_components[5].short_name.toLowerCase()
+              document.querySelector('#locate-button').setAttribute('href', `/results/${country}`)
+            })
         },
         function () {
           console.log("Error in the geolocation service.");
         }
       );
-        } else {
+    } else {
       console.log("Browser does not support geolocation.");
-}
-}
-locateBrowser()
+    }
+  }
+
+  window.onload = locateBrowser()
 </script>

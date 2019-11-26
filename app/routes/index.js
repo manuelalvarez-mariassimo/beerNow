@@ -17,14 +17,22 @@ const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
 // Instantiates a client
 const translationClient = new TranslationServiceClient();
 async function translateText(targetLanguage) {
-  
+  let sourceLanguage;
+
+  // If target language is english, change sourcelanguage
+  if(targetLanguage.includes('en')){
+    sourceLanguage = 'es'
+  } else {
+    sourceLanguage = 'en'
+  }
+
   // Construct request
   const request = {
     parent: translationClient.locationPath(projectId, location),
     contents: [text],
     mimeType: 'text/plain', // mime types: text/plain, text/html
-    sourceLanguageCode: 'en-US',
-    targetLanguageCode: 'es-ES',
+    sourceLanguageCode: sourceLanguage,
+    targetLanguageCode: targetLanguage,
   };
 
   // Run request
@@ -35,14 +43,16 @@ async function translateText(targetLanguage) {
   }
 }
 
+
+
+
 /* GET home page */
 router.get('/', (req, res, next) => {
    res.render('index');
 });
 
-router.get('/results', (req, res, next) => {
-  console.log(req.params)
-  translateText().then(result => {
+router.get('/results/:countryCode', (req, res, next) => {
+  translateText(req.params.countryCode).then(result => {
     apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
     res.render("results", {apiUrl, result});
   })
