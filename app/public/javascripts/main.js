@@ -25,11 +25,8 @@ function startMap() {
           title: "You are here."
         });
 
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.3895185,-3.7040151&radius=1500&type=restaurant&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
-          .then(results => {
-            console.log(results.data);
-          })
-          .catch(err => console.log(err));
+        showMarkers(map, user_location.lat, user_location.lng)
+
       },
 
       function() {
@@ -43,28 +40,30 @@ function startMap() {
 
 startMap();
 
-// function showMarkers(map) {
-//   axios.get("http://localhost:3000/places-data").then(allPlaces => {
-//     allPlaces.data.forEach(places => {
-//       let marker = new google.maps.Marker({
-//         position: {
-//           lat: places.location.coordinates[0],
-//           lng: places.location.coordinates[1]
-//         },
-//         map: map,
-//         title: places.name,
-//         draggable : true
-//       });
+function showMarkers(map, lat, lng) {
+  axios
+    .get(
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=bar&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
+    )
+    .then(barsPayload => {
 
-//       var infowindow = new google.maps.InfoWindow({
-//         content: `${places.name} - ${places.type} <br>At ${marker.position}`
-//       });
+      barsPayload.data.results.forEach(results => {
 
-//       marker.addListener("click", function() {
-//         infowindow.open(map, marker);
-//       });
+        let marker = new google.maps.Marker({
+          position: results.geometry.location,
+          map: map,
+          title: results.name,
+          icon:'../images/icon-beer.png',
+        });
 
-//     });
+        var infowindow = new google.maps.InfoWindow({
+          content: results.name
+        });
 
-//   });
-// }
+        marker.addListener("click", function() {
+          infowindow.open(map, marker);
+        });
+      });
+    })
+    .catch(err => console.log(err));
+}
