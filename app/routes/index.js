@@ -1,6 +1,8 @@
 const express = require('express');
 const router  = express.Router();
 const Translate = require('@google-cloud/translate');
+const textToSpeech = require('@google-cloud/text-to-speech');
+
 
 // Google apis
 let apiUrl;
@@ -38,15 +40,49 @@ async function translateText(targetLanguage) {
   // Run request
   const [response] = await translationClient.translateText(request);
 
+  let transText;
+
   for (const translation of response.translations) {
-    return translation.translatedText;
+    transText = translation.translatedText;
   }
+
+    // Create audio Text to Speach
+    main(transText, targetLanguage)
+    return transText;
 }
 
 
+// Google Text to Speech Api
+const fs = require('fs');
+const util = require('util');
+async function main(textParam, languageCodeParam) {
+  // Creates a client
+  const client = new textToSpeech.TextToSpeechClient();
+
+  // The text to synthesize
+  const text = textParam;
+  const languageCode = languageCodeParam;
 
 
-/* GET home page */
+  // Construct the request
+  const request = {
+    input: {text: text},
+    // Select the language and SSML Voice Gender (optional)
+    voice: {languageCode: languageCode, ssmlGender: 'NEUTRAL'},
+    // Select the type of audio encoding
+    audioConfig: {audioEncoding: 'MP3'},
+  };
+
+  // Performs the Text-to-Speech request
+  const [response] = await client.synthesizeSpeech(request);
+
+  // Write the binary audio content to a local file
+  const writeFile = util.promisify(fs.writeFile);
+  await writeFile(__dirname + '/../public/sounds/output.mp3', response.audioContent, 'binary');
+  console.log('Audio content written to file: output.mp3');
+}
+
+/* Routes */
 router.get('/', (req, res, next) => {
    res.render('index');
 });

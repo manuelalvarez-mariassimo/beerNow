@@ -1,7 +1,13 @@
 <section id="translate">
   <p id="location"></p>
   <h1>{{result}}</h1>
+
+  <audio controls>
+    <source src="http://localhost:3000/sounds/output.mp3" type="audio/mp3">
+  </audio>
+
   <p>Listen to it</p>
+
 </section>
 
 <section id="bars">
@@ -12,7 +18,7 @@
 
 <section id="beers">
   <h2>We've found<span id="beers-num"></span> local beers!</h2>
-  
+
   {{!-- Add country as param --}}
   <a href="/beers/">See the complete list</a>
 </section>
@@ -33,13 +39,13 @@
           };
 
           axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${user_location.lat},${user_location.lng}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
-          .then(results => {
+            .then(results => {
               city = results.data.results[0].address_components[3].long_name
               country = results.data.results[0].address_components[5].long_name
 
               document.querySelector("#location").innerText = `You're at ${city}, ${country}`
             }
-          )
+            )
 
           const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15
@@ -76,7 +82,7 @@
   function showMarkers(map, lat, lng) {
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=bar&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=bar&opennow=true&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
       )
       .then(barsPayload => {
         barsPayload.data.results.forEach(results => {

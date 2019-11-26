@@ -8,6 +8,7 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@google-cloud/text-to-speech": "^2.0.2",
     "@google-cloud/translate": "^5.1.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
