@@ -32,35 +32,35 @@ let beersArr = null;
 
 let users = [
   {
-    name: "Maria",
+    username: "Maria",
     country: "Spain",
     city: "Murcia",
     password: bcrypt.hashSync("Maria", bcrypt.genSaltSync(bcryptSalt)),
     email: "mariasimo@gmail.com"
   },
   {
-    name: "Manuee",
+    username: "Manuee",
     country: "Spain",
     city: "Sevilla",
     password: bcrypt.hashSync("Manuee", bcrypt.genSaltSync(bcryptSalt)),
     email: "manualvarezrosado@gmail.com"
   },
   {
-    name: "Anne",
+    username: "Anne",
     country: "UK",
     city: "Brighton",
     password: bcrypt.hashSync("Anne", bcrypt.genSaltSync(bcryptSalt)),
     email: "anne.doe@gmail.com"
   },
   {
-    name: "Francesco",
+    username: "Francesco",
     country: "Italy",
     city: "Milan",
     password: bcrypt.hashSync("Francesco", bcrypt.genSaltSync(bcryptSalt)),
     email: "francesco.doe@gmail.com"
   },
   {
-    name: "Benoît",
+    username: "Benoît",
     country: "France",
     city: "Lyon",
     password: bcrypt.hashSync("Benoît", bcrypt.genSaltSync(bcryptSalt)),

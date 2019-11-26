@@ -8,11 +8,6 @@ let apiUrl;
 let apiKey = process.env.GOOGLE_MAPS_API_KEY;
 
 
-// Google apis
-let apiUrl;
-let apiKey = process.env.GOOGLE_MAPS_API_KEY;
-
-
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
