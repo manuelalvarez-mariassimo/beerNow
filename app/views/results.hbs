@@ -1,5 +1,5 @@
 <section id="translate">
-  <p>You are a XXXX</p>
+  <p id="location"></p>
   <h1></h1>
   <p>Listen to it</p>
 </section>
@@ -12,6 +12,7 @@
 
 <section id="beers">
   <h2>We've found<span id="beers-num"></span> local beers!</h2>
+  
   {{!-- Add country as param --}}
   <a href="/beers/">See the complete list</a>
 </section>
@@ -19,6 +20,8 @@
 
 <script src="{{apiUrl}}"></script>
 <script>
+  let city, country;
+
   function startMap() {
     // Initialize the map
     if (navigator.geolocation) {
@@ -28,6 +31,16 @@
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+
+          axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${user_location.lat},${user_location.lng}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+          .then(results => {
+              city = results.data.results[0].address_components[3].long_name
+              country = results.data.results[0].address_components[5].long_name
+
+              document.querySelector("#location").innerText = `You're at ${city}, ${country}`
+              console.log(city, country)
+            }
+          )
 
           const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15
@@ -67,6 +80,7 @@
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=bar&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
       )
       .then(barsPayload => {
+        console.log(barsPayload.data.results)
 
         barsPayload.data.results.forEach(results => {
 

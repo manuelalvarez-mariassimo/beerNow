@@ -1,43 +1,4 @@
 This is index view
 
-<a href="/results"><button type="submit" id="locate-button">Locate me</button></a>
+<a href="/results">Locate me</a>
     
-{{!-- 
-<script>
-    function getBarsData() {
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                position => {
-                    const user_location = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-
-                    axios
-                        .get(
-                            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${user_location.lat},${user_location.lng}&radius=1500&type=bar&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
-                        )
-                        .then(barsPayload => {
-                            axios({
-                                method: "post",
-                                url: "/results",
-                                data: { data: barsPayload.data.results },
-                                config: { headers: { "Content-Type": "multipart/form-data" } }
-                            }).then(createdBars => {
-                                console.log("Location and bars added to /createBars")
-                            });
-                        })
-                },
-
-                function () {
-                    console.log("Error in the geolocation service.");
-                }
-            );
-        } else {
-            console.log("Browser does not support geolocation.");
-        }
-    }
-
-    getBarsData()
-</script> --}}
