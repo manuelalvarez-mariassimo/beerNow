@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -69,5 +70,58 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+
+passport.use(
+  new GoogleStrategy({
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+      callbackURL: "/auth/google/callback"
+    },
+    (accessToken, refreshToken, profile, done) => {
+      User.findOne({
+          googleID: profile.id
+        })
+        .then(user => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+          console.log(profile)
+          const newUser = {
+            username: profile.name.givenName,
+            password: profile.id,
+            email: profile.emails[0].value,
+            country: null,
+            city: null,
+            picture: profile.photos[0].value,
+          }
+          User.create(newUser)
+            .then(newUser => {
+              done(null, newUser);
+            })
+            .catch(err => done(err)); // closes User.create()
+        })
+        .catch(err => done(err)); // closes User.findOne()
+    }
+  )
+);
+
+router.get("/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/index",
+    failureRedirect: "/" // here you would redirect to the login page using traditional login approach
+  })
+);
+
 
 module.exports = router;

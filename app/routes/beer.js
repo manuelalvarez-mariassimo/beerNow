@@ -2,8 +2,12 @@ const express = require('express');
 const router  = express.Router();
 
 /* GET home page */
+router.get('/', (req, res, next) => {
+  res.render('beers/list');
+});
+
 router.get('/:country', (req, res, next) => {
-  res.render('/beers/list');
+  res.render('beers/list');
 });
 
 router.get('/:id', (req, res, next) => {
@@ -11,7 +15,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.put('/:id/update', (req, res, next) => {
-  res.render('/beers/details');
+  res.render('beers/details');
 });
 
 module.exports = router;
