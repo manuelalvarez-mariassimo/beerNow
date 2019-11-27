@@ -88,14 +88,11 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/results/:coords', (req, res, next) => {
-
   let coords = req.params.coords
-
   translateText("es").then(result => {
     apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
     res.render("results", {apiUrl, result, coords});
   })
-
 });
 
 
