@@ -6,12 +6,16 @@ router.get('/', (req, res, next) => {
   res.render('beers/list');
 });
 
-router.get('/:country', (req, res, next) => {
-  res.render('beers/list');
-});
+// router.get('/:country', (req, res, next) => {
+//   res.render('beers/list');
+// });
 
-router.get('/:id', (req, res, next) => {
-  res.render('/beers/details');
+// router.get('/:id', (req, res, next) => {
+//   res.render('beers/details');
+// });
+
+router.get('/details', (req, res, next) => {
+  res.render('beers/details');
 });
 
 router.put('/:id/update', (req, res, next) => {
