@@ -1,7 +1,6 @@
-<FilesMatch "\.(js)$">
 <IfModule mod_headers.c>
-    Header add Access-Control-Allow-Origin "*"
-    Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+    Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "Content-Type"
+Header set Access-Control-Allow-Methods "GET"
 </IfModule>
-</FilesMatch>
 
