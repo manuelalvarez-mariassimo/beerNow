@@ -26,7 +26,7 @@ This is index view
         .then(addressPayLoad => {
           let lat = addressPayLoad.data.results[0].geometry.location.lat
           let lng = addressPayLoad.data.results[0].geometry.location.lng
-
+          let country = addressPayLoad.data.results[0]
           window.location.href = `/results/${lat},${lng}`
         })
     }

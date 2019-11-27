@@ -3,11 +3,9 @@ const router  = express.Router();
 const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
 
-
 // Google apis
 let apiUrl;
 let apiKey = process.env.GOOGLE_MAPS_API_KEY;
-
 
 //Google translate API
 const projectId = process.env.GOOGLE_CLOUD_PROJECT_ID;
@@ -89,10 +87,12 @@ router.get('/', (req, res, next) => {
 
 router.get('/results/:coords', (req, res, next) => {
   let coords = req.params.coords
-  translateText("es").then(result => {
+  translateText("es")
+  .then(result => {
     apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
     res.render("results", {apiUrl, result, coords});
   })
+  .catch(err => {throw err})
 });
 
 router.post("/results", (req, res, next) => {
