@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
+const cors = require('cors')
 
 var whitelist = ['https://iron-beernow.herokuapp.com/results/', 'https://iron-beernow.herokuapp.com/']
 var corsOptionsDelegate = function (req, callback) {
