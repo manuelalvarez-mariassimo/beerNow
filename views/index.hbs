@@ -1,9 +1,7 @@
 This is index view
 
-<form id="address-search" action="/results" method="POST">
-  <input type="text" id="address" placeholder="You can add your address here">
-  <input type="submit" id="address-button" value="Start a search">
-</form>
+<input type="text" id="address" placeholder="You can add your address here">
+<a id="address-button">Search by address</a>
 
 <a id="locate-button">Locate me</a>
 
@@ -17,10 +15,10 @@ This is index view
   addressBtn.onclick = getCoords
   locateBtn.onclick = getGeoloc
 
+
+
   function getCoords() {
-
     // how to pass coords to url
-
     if (addressInput.value) {
       let addressStr = addressInput.value
 
@@ -29,16 +27,13 @@ This is index view
           let lat = addressPayLoad.data.results[0].geometry.location.lat
           let lng = addressPayLoad.data.results[0].geometry.location.lng
 
-          console.log(lat, lng)
+          window.location.href = `/results/${lat},${lng}`
         })
     }
   }
 
 
   function getGeoloc() {
-
-    //fix promise
-    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
@@ -47,9 +42,12 @@ This is index view
             lng: position.coords.longitude
           };
         })
-      locateBtn.setAttribute('href', `/results/${user_location.lat},${user_location.lng}`)
+      //fix promise
+
+      if (user_location) {
+        window.location.href = `/results/${user_location.lat},${user_location.lng}`
+      }
     }
   }
-
 
 </script>
