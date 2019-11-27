@@ -47,11 +47,11 @@ async function translateText(targetLanguage) {
   }
 
     // Create audio Text to Speach
-    main(transText, targetLanguage)
+    //main(transText, targetLanguage)
     return transText;
 }
 
-
+/*
 // Google Text to Speech Api
 const fs = require('fs');
 const util = require('util');
@@ -80,7 +80,7 @@ async function main(textParam, languageCodeParam) {
   const writeFile = util.promisify(fs.writeFile);
   await writeFile(__dirname + '/../public/sounds/output.mp3', response.audioContent, 'binary');
   console.log('Audio content written to file: output.mp3');
-}
+}*/
 
 /* Routes */
 router.get('/', (req, res, next) => {
@@ -89,12 +89,12 @@ router.get('/', (req, res, next) => {
 
 router.get('/results/:coords', (req, res, next) => {
 
-  console.log(req.params.coords)
-  res.render("results")
-  // translateText(req.params.countryCode).then(result => {
-  //   apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-  //   res.render("results", {apiUrl, result});
-  // })
+  let coords = req.params.coords
+
+  translateText("es").then(result => {
+    apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+    res.render("results", {apiUrl, result, coords});
+  })
 
 });
 
