@@ -95,7 +95,6 @@ router.get('/results/:coords', (req, res, next) => {
   })
 });
 
-
 router.post("/results", (req, res, next) => {
   console.log(req.body)
 })
