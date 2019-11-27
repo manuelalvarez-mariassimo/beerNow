@@ -7,6 +7,14 @@ const textToSpeech = require('@google-cloud/text-to-speech');
 let apiUrl;
 let apiKey = process.env.GOOGLE_MAPS_API_KEY;
 
+const app = express();
+
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
 //Google translate API
 const projectId = process.env.GOOGLE_CLOUD_PROJECT_ID;
 const location = 'global';
