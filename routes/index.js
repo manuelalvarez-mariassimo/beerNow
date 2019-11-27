@@ -2,18 +2,8 @@ const express = require('express');
 const router  = express.Router();
 const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
-const cors = require('cors')
+const cors = require("cors");
 
-var whitelist = ['https://iron-beernow.herokuapp.com/results/', 'https://iron-beernow.herokuapp.com/']
-var corsOptionsDelegate = function (req, callback) {
-  var corsOptions;
-  if (whitelist.indexOf(req.header('Origin')) !== -1) {
-    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false } // disable CORS for this request
-  }
-  callback(null, corsOptions) // callback expects two parameters: error and options
-}
 
 // Google apis
 let apiUrl;
@@ -97,7 +87,7 @@ router.get('/', (req, res, next) => {
    res.render('index');
 });
 
-router.get('/results/:coords', cors(corsOptionsDelegate), (req, res, next) => {
+router.get('/results/:coords', cors(), (req, res, next) => {
   let coords = req.params.coords
   translateText("es")
   .then(result => {
