@@ -1,20 +1,40 @@
 <div class="detailsBeer">
   <div class="description">
-    <h1>Moretti La Rossa</h1>
-    <p>Traditional German-Style Black</p>
+    <h1>{{name}}</h1>
+    <p>{{style}}</p>
   </div>
   <div class="imgDetails">
-    <img src="https://www.totalwine.com/dynamic/1000x/media/sys_master/twmmedia/hab/h5d/8806073499678.png" alt="">
+    <img src="{{image}}" alt="">
   </div>
   <div class="rate">
     <div class="stars">
       XXXXXXX
     </div>
     <div class="alcohol">
-      <p>Alc. 7.2% vol.</p>
+      <p>Alc. {{alcohol}}% vol.</p>
     </div>
   </div>
   <div class="beerInfo">
-    <p>Birra Moretti La Rossa is a double boch beer produced using high quality 100% malted barley, giving it a rich sweet taste and an intense fragrance of roasted malt. The amber color that characterizes the beer, comes from the kind of malt used in the recipe (malt is dried, roasted barley). Another key ingredient is hops, the variety used is particularly aromatic. The Master Brewers advise a service temperature between 10C° and 12° C.</p>
+    <p>{{description}}</p>
   </div>
+  <form action="/beers/details/{{_id}}" method="post">
+    <div class="Comment">
+      <p>What do you think?</p>
+      <textarea name="comment" id="" cols="30" rows="10"></textarea>
+      <div class="rateSubmit">
+        <div class="stars">
+          XXXXXXX
+        </div>
+        <div class="submit">
+          <button>SUBMIT</button>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </form>
+  <div class="beerComments">
+    <p>14 Comments on this beer</p>
+  </div>
+
+
 </div>
