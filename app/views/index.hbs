@@ -1,9 +1,10 @@
 This is index view
 
-<a href="" id="locate-button">Locate me</a>
+<a href="results" id="locate-button">Locate me</a>
 
 <script>
   let country;
+
   function locateBrowser() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -32,5 +33,5 @@ This is index view
     }
   }
 
-  window.onload = locateBrowser()
+  locateBrowser()
 </script>
