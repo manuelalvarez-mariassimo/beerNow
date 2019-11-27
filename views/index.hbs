@@ -1,6 +1,7 @@
 This is index view
 
-<input type="text" id="address" placeholder="You can add your address here">
+<input type="text" id="address" placeholder="You can add your address here"
+  value="Piazza del Colosseo, 1, 00184 Roma RM, Italia">
 <button id="address-button">Search by address</button>
 
 <button id="locate-button">Locate me</button>
@@ -13,8 +14,9 @@ This is index view
   let locateBtn = document.querySelector('#locate-button')
 
   addressBtn.onclick = getCoords
-  locateBtn.onclick = getGeoloc
-
+  locateBtn.addEventListener("click", function () {
+    getGeoloc(coordsAvailable)
+  })
 
 
   function getCoords() {
@@ -22,32 +24,74 @@ This is index view
     if (addressInput.value) {
       let addressStr = addressInput.value
 
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressStr}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+      return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressStr}&language=en&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
         .then(addressPayLoad => {
-          let lat = addressPayLoad.data.results[0].geometry.location.lat
-          let lng = addressPayLoad.data.results[0].geometry.location.lng
-          let country = addressPayLoad.data.results[0]
-          window.location.href = `/results/${lat},${lng}`
+
+          console.log(addressPayLoad)
+          return coords = {
+            lat: addressPayLoad.data.results[0].geometry.location.lat,
+            lng: addressPayLoad.data.results[0].geometry.location.lng,
+            address: addressPayLoad.data.results[0].address_components
+          }
+
+        })
+        .then(coords => {
+          getLanguage(coords)
         })
     }
   }
 
 
-  function getGeoloc() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          return user_location = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-        })
-      //fix promise
 
-      if (user_location) {
-        window.location.href = `/results/${user_location.lat},${user_location.lng}`
-      }
-    }
+  function getGeoloc(cb) {
+    navigator.geolocation.getCurrentPosition(pos => {
+      return cb(pos);
+    })
   }
 
+
+  function coordsAvailable(pos) {
+    let coords = {
+      lat: pos.coords.latitude,
+      lng: pos.coords.longitude
+    };
+    console.log(coords);
+
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&language=en&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+      .then(addressPayLoad => {
+        return coords = {
+          lat: addressPayLoad.data.results[0].geometry.location.lat,
+          lng: addressPayLoad.data.results[0].geometry.location.lng,
+          address: addressPayLoad.data.results[0].address_components
+        }
+
+      })
+      .then(coords => {
+        getLanguage(coords)
+      })
+  }
+
+
+
+  function getLanguage(coords) {
+    axios.get(`https://restcountries.eu/rest/v2/all?fields=latlng;name;languages`)
+      .then(res => {
+        let lan, value, longRegex;
+        res.data.forEach(countryData => {
+
+          for (const key in coords.address) {
+            value = coords.address[key];
+            //console.log(countryData.name, value.long_name, value.short_name)
+
+            longRegex = new RegExp(/^value.long_name{0,10}$/);
+
+            if (countryData.name === value.short_name || countryData.name === value.long_name || countryData.name.match(longRegex)) {
+              return lan = countryData.languages[0].iso639_1;
+            }
+          }
+        })
+
+        window.location.href = `/results/${lan}/${coords.lat},${coords.lng}`;
+      })
+  }
 </script>
