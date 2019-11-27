@@ -38,14 +38,14 @@
             lng: position.coords.longitude
           };
 
-          axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${user_location.lat},${user_location.lng}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+     /*     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${user_location.lat},${user_location.lng}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
             .then(results => {
               city = results.data.results[0].address_components[3].long_name
               country = results.data.results[0].address_components[5].long_name
 
               document.querySelector("#location").innerText = `You're at ${city}, ${country}`
             }
-            )
+            )*/
 
           const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15

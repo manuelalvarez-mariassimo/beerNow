@@ -1,37 +1,55 @@
 This is index view
 
-<a href="results" id="locate-button">Locate me</a>
+<form id="address-search" action="/results" method="POST">
+  <input type="text" id="address" placeholder="You can add your address here">
+  <input type="submit" id="address-button" value="Start a search">
+</form>
+
+<a id="locate-button">Locate me</a>
 
 <script>
   let country;
+  let user_location;
+  let addressInput = document.querySelector('#address')
+  let addressBtn = document.querySelector('#address-button')
+  let locateBtn = document.querySelector('#locate-button')
 
-  function locateBrowser() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const user_location = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
+  addressBtn.onclick = getCoords
+  locateBtn.onclick = getGeoloc
 
-/*            lat:'55.7539303',
-            lng: '37.6186063'*/
-          };
+  function getCoords() {
 
+    // how to pass coords to url
 
-          axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${user_location.lat},${user_location.lng}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
-            .then(results => {
-              country = results.data.results[0].address_components[5].short_name.toLowerCase()
-              document.querySelector('#locate-button').setAttribute('href', `/results/${country}`)
-            })
-        },
-        function () {
-          console.log("Error in the geolocation service.");
-        }
-      );
-    } else {
-      console.log("Browser does not support geolocation.");
+    if (addressInput.value) {
+      let addressStr = addressInput.value
+
+      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressStr}&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+        .then(addressPayLoad => {
+          let lat = addressPayLoad.data.results[0].geometry.location.lat
+          let lng = addressPayLoad.data.results[0].geometry.location.lng
+
+          console.log(lat, lng)
+        })
     }
   }
 
-  locateBrowser()
+
+  function getGeoloc() {
+
+    //fix promise
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          return user_location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+        })
+      locateBtn.setAttribute('href', `/results/${user_location.lat},${user_location.lng}`)
+    }
+  }
+
+
 </script>

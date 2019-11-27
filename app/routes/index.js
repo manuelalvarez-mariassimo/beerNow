@@ -87,11 +87,14 @@ router.get('/', (req, res, next) => {
    res.render('index');
 });
 
-router.get('/results/:countryCode', (req, res, next) => {
-  translateText(req.params.countryCode).then(result => {
-    apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-    res.render("results", {apiUrl, result});
-  })
+router.get('/results/:coords', (req, res, next) => {
+
+  console.log(req.params.coords)
+  res.render("results")
+  // translateText(req.params.countryCode).then(result => {
+  //   apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+  //   res.render("results", {apiUrl, result});
+  // })
 
 });
 
