@@ -2,8 +2,6 @@ const express = require('express');
 const router  = express.Router();
 const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
-const cors = require("cors");
-
 
 // Google apis
 let apiUrl;
@@ -87,7 +85,7 @@ router.get('/', (req, res, next) => {
    res.render('index');
 });
 
-router.get('/results/:coords', cors(), (req, res, next) => {
+router.get('/results/:coords', (req, res, next) => {
   let coords = req.params.coords
   translateText("es")
   .then(result => {
