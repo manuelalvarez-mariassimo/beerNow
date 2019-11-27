@@ -29,10 +29,34 @@ input {
   margin-left: 15px; }
 
 .imgBeer {
+  width: 45%;
   display: flex;
+  justify-content: center;
   align-items: center; }
 
 .imgBeer img {
-  max-width: 75px; }
+  max-width: 30px; }
+
+/* ------ BEERS DETAILS ------ */
+.imgDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid silver; }
+
+.imgDetails img {
+  max-width: 60%; }
+
+.rate {
+  display: flex;
+  justify-content: space-between; }
+
+.Comment textarea {
+  width: 98%;
+  border: 1px solid silver; }
+
+.rateSubmit {
+  display: flex;
+  justify-content: space-between; }
 
 /*# sourceMappingURL=style.css.map */
