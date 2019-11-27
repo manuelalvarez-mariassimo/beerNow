@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ironhack-259520",
+  "private_key_id": "374a5de0cc1c2653a8830e8b5c323a5d3b9d831a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD0WdD7bhEAEBsm\nt+m3COdkJORWTt0FpyZI4dzfR/BdKJO7BtTRB8NOK8bSVh3tQvg6+FLXtxdW9Zgk\n0ubv2wmonjWFqwWHe+tsVCkFoSKDFKDFAJ7AZZbP73nQRdTRf0A29n/FJivOipI1\n+IBPWv9zdvy2cBZyoD/1uPfU5c+Jh98FDHdiIEbGWOVHtb2LqV/rodK5v1Vtc10o\nUG/1l8vPyrhfzUr2Ssl8QUc6H4H0Tyd/BfiGWj0YA651VJJSVglD5nf3acoQmgNQ\njpuDV9i4V3qfoPHc+6zfeEbfTeyPeRCUbx+UQr3rTSY2ou2xIENLWGD3/HKYeTcP\n5hW6z1FdAgMBAAECggEABx/GQMpi+wA9NmoGyaQcEPalZKHMfmFy842IQcdIagLo\nmbuXgVerWVBb7d5+ZWA+OgPq8GihaNLkwnAWtRgLBkxEjbbghKR3hvNGNeiOh8lW\nbZ/4wO3FUZ8vC0Q58fi2j9Osgnw8Kzutix7JaObji0OFFzGZ6fIjoz+nFCE2JZGO\nuGg7E01uZ3bAb/r4nLAjvgk0SIMBfYlHV1ZDA9oeGMKhaM8BfoGFnZbZ00hFQ4CJ\nuJsoRJcwXB8BKC1CgkzMoQ1gHi4QZ2lv2eENCd95eSYiDBHfzWJmRpeqSGuY/6d1\nLMBuRRM3Ks77VvIegH/WhtjTn3dGSN8afhAch0lPqQKBgQD9evz3v9V3AyYJRs5A\nu1VnbgHtHnaCKcdUMXai6SQYjOCfl9UgujQlcxKASY/wOeNy/+MgjrSFLVJl/bqU\nDT/9zEzK0NvxRW8sY8SoUdobw7/4COfK7DZeoqRx+iWnGx+weg/+rXkiL381EOWZ\nCLVwg83Bb3yNYGjMjUlsTKhDeQKBgQD2x5jLsir2w64iE6xsjCqDeF+CxK2+l6yW\nXQeB8DK6Ng43AGLFg7tAPYGFPR3qYrmET9ueBZZAIbV/6P4EW57Hl+N51EzbG6SX\nT0bDI30WvPn1UH7STFoIvLfYxOJphy3SW9+CxbJdMh8L2jbsaA/ZJvQ8aqtnqUqM\nLv7KADYABQKBgQDY/vigfzEW+TMOrfbTo4uxR5OOko2RUIK7qLyPKlckTTXeafSi\nV8Vcae5ktJTsaiI0yKp/rKsNd4camOOo6s7lTohO+A3Rtkc+EQrBrZCyRBmLFNSZ\n+y1wRnvQtvyU2bt/MH+Q3qDcixyzKQvkvnfVIoB6IB7YSLhupGU+uUEywQKBgQCz\nUSOY19TaTCQLBOqkUVFPCLe2KL3rIQE6nUyoQWZK4p5/ntsmlGsK6eZkb51+Q9Bz\n8Scu8vZTkWr2D9IMTprYg2i6jOZvy+1UOTm879ukGxsyAxS0MOC3OpIIhD/U2HIW\nScXmm0rY52Oh1CVWsOLbMrAD+qqj/2J47GkdVPvoFQKBgEie5y/EeMctSeEH1HAj\nTsl8KutAXuXFrH6Zw3lh58DiNB/IPQzsUOFLO9NWwrThvad2Sjyp2G6YtC2HESeA\nTpQML8a+0xQNm3iHLYobdalYfgTJ44cYi2fYcFrbbUL6H/axn81eRw4PX1UERy8p\nWTqxrARHKQqjTaxw9jnCVA3l\n-----END PRIVATE KEY-----\n",
+  "client_email": "beer-now-translate@ironhack-259520.iam.gserviceaccount.com",
+  "client_id": "105690683418891163687",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/beer-now-translate%40ironhack-259520.iam.gserviceaccount.com"
+}
