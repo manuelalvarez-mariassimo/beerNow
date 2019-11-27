@@ -85,9 +85,12 @@ router.get('/', (req, res, next) => {
    res.render('index');
 });
 
-router.get('/results/:lan/:coords', (req, res, next) => {
+router.get('/results/:country/:lan/:coords', (req, res, next) => {
   let coords = req.params.coords
   let lan = req.params.lan
+  let country = req.params.country
+
+
   translateText(lan)
   .then(result => {
     apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
