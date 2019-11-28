@@ -2,6 +2,7 @@
   <p id="location"></p>
   <h1>{{result}}</h1>
 
+
   <input type="hidden" id="coords" value="{{coords}}">
 
   <audio controls>
@@ -21,7 +22,21 @@
 <section id="beers">
   <h2>We've found<span id="beers-num"></span> local beers!</h2>
 
-  {{!-- Add country as param --}}
+
+{{#each beerList}}
+<a href="/beers/details/{{this._id}}">
+<div class="boxBeer">
+  <div class="imgBeer">
+    <img src="{{this.image}}" alt="">
+  </div>
+  <div class="descriptionBeer">
+    <h2>{{this.name}}</h2>
+    <h3>{{this.style}}</h3>
+    <p>ALC. {{this.alcohol}}% VOL</p>
+  </div>
+</div>
+</a>
+{{/each}}
   <a href="/beers/">See the complete list</a>
 </section>
 

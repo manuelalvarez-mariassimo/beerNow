@@ -129,7 +129,7 @@ return User.deleteMany()
             description : "Birra Moretti La Rossa is a double boch beer produced using high quality 100% malted barley, giving it a rich sweet taste and an intense fragrance of roasted malt. The amber color that characterizes the beer, comes from the kind of malt used in the recipe (malt is dried, roasted barley). Another key ingredient is hops, the variety used is particularly aromatic, giving a characteristic bitter aftertaste and a delicate fragrance to the beer. The Master Brewers advise a service temperature between 10° and 12°C.",
             rate: 3.5,
             alcohol : 40,
-            image : "https://i.ibb.co/gSbgf9K/male-placeholder.jpg",
+            image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7789_800x.jpg?v=1567143075",
             comments : [
               commentsArr[3]._id,
               commentsArr[4]._id

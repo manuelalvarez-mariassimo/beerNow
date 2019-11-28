@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
+const Beer  = require("../models/Beer");
 
 // Google apis
 let apiUrl;
@@ -94,8 +95,12 @@ router.get('/results/:country/:lan/:coords', (req, res, next) => {
   translateText(lan)
   .then(result => {
     apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-    res.render("results", {apiUrl, result, coords});
+
+    Beer.find({country}).then(beerList=> {
+      res.render("results", {apiUrl, result, beerList, coords});
+    })
   })
+
   .catch(err => {throw err})
 });
 

@@ -1,33 +1,129 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap");
 
+// Set your brand colors
+$dark-green: #001e1d;
+$medium-green: #004643;
+$green: #0b7760;
+$light-green: #abd1c6;
+$light: #e8e4e6;
+$white: #ffffff;
+$yellow: #f9bc60;
+$red: #e16162;
+$title-color: $medium-green;
+$info: $green;
+$link-focus-border: $medium-green;
 
+@import "../../node_modules/bulma/bulma.sass";
+
+//Main els
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
 
 body {
+  font: 14px "Poppins", sans-serif;
   padding: 24px;
-  font: 14px 'Poppins', sans-serif;
+
+  background-color: $yellow;
+}
+
+h2.title {
+  line-height: 1.25;
 }
 
 a {
-  color: #00B7FF;
+  color: $dark-green;
 }
 
-#map{
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  #logo {
+    width: 175px;
+  }
+
+  a {
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
+/* ------ INDEX ------ */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0;
+  justify-content: space-between;
+  align-items: center;
+
+  h2,
+  h3 {
+    text-align: center;
+  }
+
+  h2.title {
+    margin-bottom: 32px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  h3 {
+    margin-bottom: 48px;
+  }
+}
+
+#address-form {
+  width: 100%;
+  margin-bottom: 64px;
+
+  .control:first-child() {
+    flex: auto;
+  }
+
+  input:active,
+  input:focus {
+    border-color: $green;
+    //box-shadow: 0 0 0 0.125em rgba($medium-green, 0.3);
+  }
+}
+
+#locate-button {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 10px solid $light-green;
+  background-color: $medium-green;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  transition: all ease 0.3s;
+  outline: 0;
+
+  cursor: pointer;
+
+  &:hover {
+    border-color: darken($light-green, 5);
+    background-color: darken($medium-green, 1);
+  }
+}
+
+/* ------ Results ------ */
+
+#map {
   height: 400px;
 }
 
-input {
-  width: 40vw;
-  height: 30px;
-  border: 1px solid silver;
-  border-radius: 5px;
-}
-
-
 /* ------ BEERS LIST ------ */
 .boxBeer {
-display: flex;
-border: 1px solid silver;
-height: 150px;
+  display: flex;
+  border: 1px solid silver;
+  height: 150px;
 }
 
 .descriptionBeer {
@@ -35,11 +131,13 @@ height: 150px;
   width: 100%;
 }
 
-.descriptionBeer h2, h3, p {
+.descriptionBeer h2,
+h3,
+p {
   margin-left: 15px;
 }
 
-.imgBeer  {
+.imgBeer {
   width: 45%;
   display: flex;
   justify-content: center;
@@ -49,7 +147,6 @@ height: 150px;
 .imgBeer img {
   max-width: 30px;
 }
-
 
 /* ------ BEERS DETAILS ------ */
 
@@ -75,6 +172,6 @@ height: 150px;
 }
 
 .rateSubmit {
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
