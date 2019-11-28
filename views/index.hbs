@@ -5,7 +5,7 @@
         value="Piazza del Colosseo, 1, 00184 Roma RM, Italia">
     </div>
     <div class="control">
-      <a class="button is-info" id="address-button">
+      <a class="button is-info" id="address-button" onclick="animationLoad()">
         Search
       </a>
     </div>
@@ -16,12 +16,20 @@
     <h3 class="subtitle is-6">Press the button and we'll<br>geolocate your position</h3>
   </div>
 
-  <button type="button" id="locate-button"><img src="/images/icon-beer.svg"></button>
+  <button type="button" id="locate-button" onclick="animationLoad()"><img src="/images/icon-beer.svg"></button>
 
 
 </div>
 
 <script>
+
+let animDOMEL = document.querySelector('#animation')
+
+function animationLoad(){
+  animDOMEL.classList.add("cup")
+}
+
+
   let country;
   let user_location;
   let addressInput = document.querySelector('#address')
