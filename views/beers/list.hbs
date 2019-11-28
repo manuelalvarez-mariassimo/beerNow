@@ -4,16 +4,15 @@
 
 {{#each beers}}
 <a href="/beers/details/{{this._id}}">
-<div class="boxBeer">
-  <div class="imgBeer">
-    <img src="{{this.image}}" alt="">
+  <div class="box-item">
+    <div class="img-container">
+      <img src="{{this.image}}" alt="">
+    </div>
+    <div class="description">
+      <h2 class="title is-4">{{this.name}}</h2>
+      <h3 class="subtitle is-5">{{this.style}}</h3>
+      <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
+    </div>
   </div>
-  <div class="descriptionBeer">
-    <h2>{{this.name}}</h2>
-    <h3>{{this.style}}</h3>
-    <p>ALC. {{this.alcohol}}% VOL</p>
-  </div>
-</div>
 </a>
-
 {{/each}}

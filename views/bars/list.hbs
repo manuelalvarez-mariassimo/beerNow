@@ -1,0 +1,16 @@
+<h2>Una birra, per favore!</h2>
+
+<p>There is {{bars.length}} local beers for you</p>
+
+
+{{#each bars}}
+<a href="/bars/details/{{this._id}}">
+    <div class="box-item">
+        <p>{{this.name}}</p>
+        <p>{{this.comments}}</p>
+        <p>{{this.rate}}</p>
+        <p>{{this.address}}</p>
+        <p>{{this.location}}</p>
+    </div>
+</a>
+{{/each}}
