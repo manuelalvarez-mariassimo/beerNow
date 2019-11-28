@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://kit.fontawesome.com/9c01b07d37.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+</head>
+
+<body class="pages">
+
+    <div id="animation"></div>
+    <nav>
+        <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
+        <div class="menu">
+            <p>{{user.username}}</p>
+        </div>
+    </nav>
+
+<div class="beer-head"></div>
+
+    <div class="contact">
+        <div class="imgContact">
+            <img src="{{user.picture}}" alt="">
+        </div>
+        <div class="name">
+            <p>{{user.username}}</p>
+        </div>
+        <div class="location">
+            <div class="icon">
+                <i class="fas fa-map-marker-alt fa-2x"></i>
+            </div>
+            <div class="cityCountry">
+                <p>From {{user.city}}, {{user.country}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="favoriteBeers">
+<h2>Your favorite beers</h2>
+<hr>
+    </div>
+
+</body>
+
+</html>

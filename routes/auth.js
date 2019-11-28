@@ -13,6 +13,15 @@ router.get("/login", (req, res, next) => {
   res.render("auth/login", { "message": req.flash("error") });
 });
 
+
+
+router.get("/profile/:id", (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user =>
+      res.render('auth/profile', {user: user, layout: false} )
+    );
+});
+
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/auth/login",
