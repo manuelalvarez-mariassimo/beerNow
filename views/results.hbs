@@ -1,44 +1,49 @@
-<div class="results-container container">
+<div class="results-container bn-container">
   <section id="translate">
+    <div class="container">
 
-    <p id="locate-message"><img src="/images/map-pin.svg" alt=""><span>You are at {{city}}, {{country}}</span></p>
-    <h1 class="title">{{result}}</h1>
+      <p id="locate-message"><img src="/images/map-pin.svg" alt=""><span>You are at {{city}}, {{country}}</span></p>
+      <h1 class="title">{{result}}</h1>
 
-    <input type="hidden" id="coords" value="{{coords}}">
+      <input type="hidden" id="coords" value="{{coords}}">
 
-    <audio controls>
-      <source src="http://localhost:3000/sounds/output.mp3" type="audio/mp3">
-    </audio>
-    {{!-- <p>Listen to it</p> --}}
+      <audio controls>
+        <source src="http://localhost:3000/sounds/output.mp3" type="audio/mp3">
+      </audio>
+      {{!-- <p>Listen to it</p> --}}
 
+    </div>
   </section>
 
   <section id="bars" class="beer-head">
-    <h2 id="bars-num" class="title is-4"></h2>
-    <div id="map"></div>
-    <a id="bars-link" href="" class="btn button is-primary is-rounded is-medium">See the complete list</a>
+    <div class="container">
+      <h2 id="bars-num" class="title is-4"></h2>
+      <div id="map"></div>
+      <a id="bars-link" href="" class="btn button is-primary is-rounded is-medium">See the complete list</a>
+    </div>
   </section>
 
   <section id="beers">
-    <h2 class="title is-4">We've found <span id="beers-num">{{beerList.length}}</span> local beers!</h2>
+    <div class="container">
+      <h2 class="title is-4">We've found <span id="beers-num">{{beerList.length}}</span> local beers!</h2>
 
-
-
-    {{#each beerList}}
-    <a href="/beers/details/{{this._id}}">
-      <div class="box-item">
-        <div class="img-container">
-          <img src="{{this.image}}" alt="">
+      {{#each beerList}}
+      <a href="/beers/details/{{this._id}}">
+        <div class="box-item">
+          <div class="img-container">
+            <img src="{{this.image}}" alt="">
+          </div>
+          <div class="description">
+            <h2 class="title is-4">{{this.name}}</h2>
+            <h3 class="subtitle is-5">{{this.style}}</h3>
+            <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
+          </div>
         </div>
-        <div class="description">
-          <h2 class="title is-4">{{this.name}}</h2>
-          <h3 class="subtitle is-5">{{this.style}}</h3>
-          <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
-        </div>
-      </div>
-    </a>
-    {{/each}}
-    <a href="/beers/" class="btn button is-primary is-rounded is-medium">See the complete list</a>
+      </a>
+      {{/each}}
+      <a href="/beers/" class="btn button is-primary is-rounded is-medium">See the complete list</a>
+
+    </div>
   </section>
 
 </div>

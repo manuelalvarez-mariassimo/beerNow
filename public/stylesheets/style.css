@@ -7136,9 +7136,14 @@ nav {
   nav a:first-child {
     margin-right: 10px; }
 
-.btn {
+.btn.button {
   width: 100%;
-  margin: 24px 0; }
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 500;
+  max-width: 400px;
+  margin: 24px auto;
+  display: block; }
 
 audio {
   margin-bottom: 48px; }
