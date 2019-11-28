@@ -17,7 +17,9 @@ router.get("/login", (req, res, next) => {
 
 router.get("/profile/:id", (req, res, next) => {
   User.findById(req.params.id)
+  .populate("favoriteBeers")
     .then(user =>
+      // res.json(user.favoriteBeers[0].name)
       res.render('auth/profile', {user: user, layout: false} )
     );
 });

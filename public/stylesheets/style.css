@@ -7290,21 +7290,22 @@ section {
     background-position: 6000px 700px; } }
 
 .contact {
+  background: white;
   margin-bottom: 15%;
   display: flex;
   flex-direction: column; }
 
 .imgContact {
-  margin-top: 10%;
+  margin-top: -1px;
   display: flex;
   justify-content: center; }
 
 .imgContact img {
+  z-index: 9000;
   border-radius: 50%;
   max-width: 170px; }
 
 .name {
-  margin-top: 5%;
   display: flex;
   justify-content: center; }
 
@@ -7312,5 +7313,31 @@ section {
   margin-top: 3%;
   display: flex;
   justify-content: center; }
+
+.favoriteBeers {
+  background: white; }
+
+.beer-headProfile {
+  position: relative;
+  margin-top: 20px;
+  padding-top: 10px; }
+
+.beer-headProfile:before {
+  content: "";
+  background-image: url("/images/beer-head.svg");
+  height: 80px;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  top: -11vh;
+  position: absolute; }
+
+.favoriteBox {
+  width: 100px;
+  border: 1px solid red; }
+
+.imgFavoriteBeers img {
+  width: 100px;
+  height: 100px; }
 
 /*# sourceMappingURL=style.css.map */
