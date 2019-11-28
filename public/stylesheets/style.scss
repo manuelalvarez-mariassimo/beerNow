@@ -78,6 +78,13 @@ section {
   padding: 32px 24px;
 }
 
+footer{
+  background-color: $white;
+  text-align:center;
+  border-top: 1px solid #ccc;
+  padding: 16px 0;
+}
+
 //Helper classes
 .beer-head{
   margin-top: 20px;
