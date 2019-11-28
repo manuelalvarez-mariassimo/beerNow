@@ -3,6 +3,7 @@ const router  = express.Router();
 const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
 const Beer  = require("../models/Beer");
+const axios = require("axios").default
 
 // Google apis
 let apiUrl;
@@ -46,11 +47,11 @@ async function translateText(targetLanguage) {
   }
 
     // Create audio Text to Speach
-    //main(transText, targetLanguage)
+    main(transText, targetLanguage)
     return transText;
 }
 
-/*
+
 // Google Text to Speech Api
 const fs = require('fs');
 const util = require('util');
@@ -79,9 +80,24 @@ async function main(textParam, languageCodeParam) {
   const writeFile = util.promisify(fs.writeFile);
   await writeFile(__dirname + '/../public/sounds/output.mp3', response.audioContent, 'binary');
   console.log('Audio content written to file: output.mp3');
-}*/
+}
 
 /* Routes */
+router.get('/bars-nearby/:lat/:long', (req, res, next) => {
+  // let coords = req.params.coords;
+
+  axios.get(
+    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.params.lat},${req.params.long}&radius=1500&type=bar&opennow=true&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
+  )
+  .then(payLoad => {
+    res.json(payLoad.data.results)
+  })
+
+});
+
+
+
+
 router.get('/', (req, res, next) => {
    res.render('index');
 });

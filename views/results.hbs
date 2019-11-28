@@ -81,12 +81,11 @@
   function showMarkers(map, lat, lng) {
     axios
       .get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=bar&opennow=true&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
+        `/bars-nearby/${lat}/${lng}`
       )
       .then(barsPayload => {
-                  console.log(barsPayload)
-
-        barsPayload.data.results.forEach(results => {
+        barsPayload.data.forEach(results => {
+          
           let marker = new google.maps.Marker({
             position: results.geometry.location,
             map: map,
