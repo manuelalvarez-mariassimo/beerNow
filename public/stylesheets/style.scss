@@ -29,7 +29,7 @@ body {
   font: 14px "Poppins", sans-serif;
   padding: 24px;
 
-  background-color: $yellow;
+  background-color: $white;
 }
 
 h2.title {
@@ -186,4 +186,21 @@ p {
 .rateSubmit {
   display: flex;
   justify-content: space-between;
+}
+.cup {
+  position: fixed;
+  bottom: 135vh;
+  left: 0;
+  transform: translate(0%, 150%);
+  width: 100vw;
+  height: 100vh;
+  background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
+  background-position: 0px 700px;
+  background-repeat: repeat-x;
+  animation: filling 15s ease-in-out 
+}
+
+@keyframes filling {
+  50% {background-position: 3000px 0px;}
+  100% {background-position: 6000px 700px;}
 }
