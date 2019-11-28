@@ -10,7 +10,7 @@ const userSchema = new Schema(
     email: { type: String, required: true },
     picture: { type: String, default: "https://i.ibb.co/gSbgf9K/male-placeholder.jpg" },
     favoriteBars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bar' }],
-    favoriteBeers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Beer' }]
+    favoriteBeers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Beer' }],
   },
   {
     timestamps: {

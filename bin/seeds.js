@@ -158,7 +158,8 @@ return User.deleteMany()
 
     beersArr = beersCreated;
  
-    return Bar.deleteMany().then(() => {
+    return Bar.deleteMany()
+    .then(() => {
       return Bar.insertMany(
         [
           {

@@ -22,3 +22,5 @@ const barSchema = new Schema({
 
 const Bar = mongoose.model('Bar', barSchema);
 module.exports = Bar;
+
+

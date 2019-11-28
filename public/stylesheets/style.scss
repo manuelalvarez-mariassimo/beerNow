@@ -227,9 +227,16 @@ section {
 
 .imgDetails {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   border: 2px solid silver;
+}
+
+.likes {
+  position: absolute;
+  top: 5%;
+  left: 85%;
 }
 
 .imgDetails img {
@@ -321,6 +328,8 @@ flex-direction: column;
 }
 
 .favoriteBox {
+  display: flex;
+  flex-direction: column;
   width: 100px;
 border: 1px solid red ;
 }
@@ -328,6 +337,12 @@ border: 1px solid red ;
 .imgFavoriteBeers img {
   width: 100px;
   height: 100px;
+}
+
+.favoriteBeer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .bubble {

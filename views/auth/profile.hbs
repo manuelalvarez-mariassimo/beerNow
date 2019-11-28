@@ -43,19 +43,42 @@
         <h2>Your favorite beers</h2>
         <hr>
 
-        {{#each user.favoriteBeers}}
-        <div class="favoriteBox">
-             <div class="favoriteBeers">
-            <div class="img-beer">
-                <img src="{{image}}" alt="">
+        <div class="favoriteBeer">
+            {{#each user.favoriteBeers}}
+            <div class="favoriteBox">
+                <div class="img-beer">
+                    <img src="{{image}}" alt="">
+                </div>
+                <div class="name">
+                    <p>{{name}}</p>
+                </div>
             </div>
-            <div class="name">
-                <p>{{name}}</p>
+            {{/each}}
+            <a href="/beers" class="btn button is-primary is-rounded is-medium">See the complete list</a>
+
+        </div>
+
+    </div>
+
+      <div class="favoriteBeers">
+        <h2>Your favorite bars</h2>
+        <hr>
+
+        <div class="favoriteBeer">
+            {{#each user.favoriteBars}}
+            <div class="favoriteBox">
+                <div class="img-beer">
+                    <img src="{{image}}" alt="">
+                </div>
+                <div class="name">
+                    <p>{{name}}</p>
+                </div>
             </div>
+            {{/each}}
+            <a href="/bars" class="btn button is-primary is-rounded is-medium">See the complete list</a>
+
         </div>
-        </div>
-       
-        {{/each}}
+
     </div>
 
 </body>

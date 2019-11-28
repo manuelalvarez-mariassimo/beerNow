@@ -7252,9 +7252,15 @@ section {
 /* ------ BEERS DETAILS ------ */
 .imgDetails {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   border: 2px solid silver; }
+
+.likes {
+  position: absolute;
+  top: 5%;
+  left: 85%; }
 
 .imgDetails img {
   max-width: 60%; }
@@ -7334,12 +7340,19 @@ section {
   position: absolute; }
 
 .favoriteBox {
+  display: flex;
+  flex-direction: column;
   width: 100px;
   border: 1px solid red; }
 
 .imgFavoriteBeers img {
   width: 100px;
   height: 100px; }
+
+.favoriteBeer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
 
 .bubble {
   position: absolute;
