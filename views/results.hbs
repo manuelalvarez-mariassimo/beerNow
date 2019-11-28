@@ -1,6 +1,6 @@
 <div class="results-container container">
   <section id="translate">
-    
+
     <p id="locate-message"><img src="/images/map-pin.svg" alt=""><span>You are at {{city}}, {{country}}</span></p>
     <h1 class="title">{{result}}</h1>
 
@@ -16,20 +16,21 @@
   <section id="bars" class="beer-head">
     <h2 id="bars-num" class="title is-4"></h2>
     <div id="map"></div>
-    <a href="/bars"  class="btn button is-primary is-rounded is-medium">See the complete list</a>
+    <a id="bars-link" href="" class="btn button is-primary is-rounded is-medium">See the complete list</a>
   </section>
 
   <section id="beers">
     <h2 class="title is-4">We've found <span id="beers-num">{{beerList.length}}</span> local beers!</h2>
 
 
+
     {{#each beerList}}
     <a href="/beers/details/{{this._id}}">
-      <div class="box-beer">
-        <div class="img-beer">
+      <div class="box-item">
+        <div class="img-container">
           <img src="{{this.image}}" alt="">
         </div>
-        <div class="description-beer">
+        <div class="description">
           <h2 class="title is-4">{{this.name}}</h2>
           <h3 class="subtitle is-5">{{this.style}}</h3>
           <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
@@ -49,6 +50,9 @@
   let locateMessage = document.querySelector("#locate-message")
   let city, country;
   let coords = document.querySelector('#coords').value.split(",")
+  let barsLink = document.querySelector("#bars-link")
+
+  barsLink.setAttribute('href', `/bars/${coords[0]}/${coords[1]}`)
 
   function startMap() {
     const userCenter = {

@@ -7146,6 +7146,12 @@ audio {
 section {
   padding: 32px 24px; }
 
+footer {
+  background-color: #ffffff;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding: 16px 0; }
+
 .beer-head {
   margin-top: 20px;
   padding-top: 10px; }
@@ -7217,37 +7223,35 @@ section {
     color: #004643;
     margin-left: 10px; }
 
-.results-container #bars, .results-container #beers {
+.results-container #bars,
+.results-container #beers {
   background-color: #ffffff;
   position: relative; }
 
 /* ------ BEERS LIST ------ */
-.box-beer {
+.box-item {
   display: flex;
   border: 1px solid silver;
   height: 150px; }
-
-.description-beer {
-  background: #f2f2f2;
-  width: 100%;
-  padding: 16px 24px;
-  position: relative; }
-  .description-beer h2 {
-    font-weight: 700; }
-  .description-beer .alc {
-    color: #0b7760;
-    position: absolute;
-    right: 8px;
-    bottom: 8px; }
-
-.img-beer {
-  width: 45%;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.img-beer img {
-  max-width: 30px; }
+  .box-item .description {
+    background: #f2f2f2;
+    width: 100%;
+    padding: 16px 24px;
+    position: relative; }
+    .box-item .description h2 {
+      font-weight: 700; }
+    .box-item .description .alc {
+      color: #0b7760;
+      position: absolute;
+      right: 8px;
+      bottom: 8px; }
+  .box-item .img-container {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .box-item .img-container img {
+    max-width: 30px; }
 
 /* ------ BEERS DETAILS ------ */
 .imgDetails {

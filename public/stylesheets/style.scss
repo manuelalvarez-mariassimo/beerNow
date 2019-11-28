@@ -65,12 +65,12 @@ nav {
   }
 }
 
-.btn{
+.btn {
   width: 100%;
   margin: 24px 0;
 }
 
-audio{
+audio {
   margin-bottom: 48px;
 }
 
@@ -78,23 +78,29 @@ section {
   padding: 32px 24px;
 }
 
+footer {
+  background-color: $white;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding: 16px 0;
+}
+
 //Helper classes
-.beer-head{
+.beer-head {
   margin-top: 20px;
   padding-top: 10px;
 }
 
-.beer-head:before{
+.beer-head:before {
   content: "";
-  background-image: url('/images/beer-head.svg');
+  background-image: url("/images/beer-head.svg");
   height: 50px;
   width: 100vw;
   left: 0;
   right: 0;
   top: -50px;
-  position: absolute
+  position: absolute;
 }
-
 
 /* ------ INDEX ------ */
 
@@ -156,14 +162,13 @@ section {
 /* ------ Results ------ */
 
 .results-container {
-  h1{
+  h1 {
     margin: 32px 0;
   }
 
   #map {
     height: 400px;
   }
-
 
   #locate-message {
     display: flex;
@@ -178,49 +183,47 @@ section {
     }
   }
 
-  #bars, #beers {
+  #bars,
+  #beers {
     background-color: $white;
     position: relative;
   }
 }
 
-
-
 /* ------ BEERS LIST ------ */
-.box-beer {
+.box-item {
   display: flex;
   border: 1px solid silver;
   height: 150px;
-}
 
-.description-beer {
-  background: #f2f2f2;
-  width: 100%;
-  padding: 16px 24px;
-  position: relative;
+  .description {
+    background: #f2f2f2;
+    width: 100%;
+    padding: 16px 24px;
+    position: relative;
 
-  h2{
-    font-weight: 700;
+    h2 {
+      font-weight: 700;
+    }
+
+    .alc {
+      color: $green;
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+    }
   }
-  
-  .alc{
-    color: $green;
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
+
+  .img-container {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-}
 
-
-.img-beer {
-  width: 45%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.img-beer img {
-  max-width: 30px;
+  .img-container img {
+    max-width: 30px;
+  }
 }
 
 /* ------ BEERS DETAILS ------ */
@@ -272,8 +275,12 @@ section {
 }
 
 @keyframes filling {
-  50% {background-position: 3000px 0px;}
-  100% {background-position: 6000px 700px;}
+  50% {
+    background-position: 3000px 0px;
+  }
+  100% {
+    background-position: 6000px 700px;
+  }
 }
 
 .contact {
