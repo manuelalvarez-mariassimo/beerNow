@@ -7114,8 +7114,15 @@ body {
   padding: 24px;
   background-color: #ffffff; }
 
+.pages {
+  background-color: #f9bc60; }
+
 h2.title {
   line-height: 1.25; }
+
+h1.title {
+  font-size: 3.75rem;
+  font-weight: 700; }
 
 a {
   color: #001e1d; }
@@ -7128,6 +7135,9 @@ nav {
     width: 175px; }
   nav a:first-child {
     margin-right: 10px; }
+
+section {
+  padding: 32px 0; }
 
 /* ------ INDEX ------ */
 .home-container {
@@ -7172,6 +7182,9 @@ nav {
 /* ------ Results ------ */
 #map {
   height: 400px; }
+
+audio {
+  border: 1px solid red; }
 
 /* ------ BEERS LIST ------ */
 .boxBeer {
@@ -7227,7 +7240,7 @@ p {
   width: 100vw;
   height: 100vh;
   background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
-  background-position: 0px 700px;
+  background-position: 0px 500px;
   background-repeat: repeat-x;
   animation: filling 15s ease-in-out; }
 
