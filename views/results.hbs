@@ -60,6 +60,9 @@
       }
     );
 
+    showMarkers(map, userCenter.lat, userCenter.lng)
+
+
     // Add a marker for your user location
     const marker = new google.maps.Marker({
       position: {
@@ -70,7 +73,6 @@
       title: "You are here."
     });
 
-    showMarkers(map, userCenter.lat, userCenter.lng)
 
   }
 
@@ -89,7 +91,7 @@
             position: results.geometry.location,
             map: map,
             title: results.name,
-            icon: '../../images/icon-beer.png',
+            icon: '/images/icon-beer.png',
           });
 
           var infowindow = new google.maps.InfoWindow({
