@@ -7281,7 +7281,8 @@ section {
   background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
   background-position: 0px 500px;
   background-repeat: repeat-x;
-  animation: filling 15s ease-in-out; }
+  animation: filling 15s ease-in-out;
+  overflow: hidden; }
 
 @keyframes filling {
   50% {
@@ -7339,5 +7340,12 @@ section {
 .imgFavoriteBeers img {
   width: 100px;
   height: 100px; }
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  background-size: contain;
+  transition: all 9s; }
 
 /*# sourceMappingURL=style.css.map */

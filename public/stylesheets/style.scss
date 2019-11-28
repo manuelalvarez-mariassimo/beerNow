@@ -261,6 +261,7 @@ section {
   background-position: 0px 500px;
   background-repeat: repeat-x;
   animation: filling 15s ease-in-out;
+  overflow: hidden;
 }
 
 @keyframes filling {
@@ -328,3 +329,13 @@ border: 1px solid red ;
   width: 100px;
   height: 100px;
 }
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  // background: url(../images/beerBubble.png) no-repeat;
+  background: rgba(255, 255, 255, .3);
+  background-size: contain;
+  transition: all 9s;
+}
+

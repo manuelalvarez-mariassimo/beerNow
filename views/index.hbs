@@ -15,6 +15,7 @@
 <body>
 
   <div id="animation"></div>
+
   <nav>
     <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
     <div class="menu">
@@ -48,16 +49,38 @@
     </section>
   </main>
 
-
-
-
   <script>
 
     let animDOMEL = document.querySelector('#animation')
 
+    const randomFloat = (min, max) => Math.random() * (max - min) + min;
+    const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+    const shuffle = array => array.sort(() => Math.random() - 0.5);
+
+
     function animationLoad() {
       animDOMEL.classList.add("cup")
+
+      Array(170)
+        .fill()
+        .forEach((_, idx) => {
+          let bubbleDOMEl = document.createElement("div")
+          bubbleDOMEl.className = "bubble"
+          bubbleDOMEl.style.height = bubbleDOMEl.style.width = `${randomFloat(5, 20)}px`
+          bubbleDOMEl.style.left = `${randomFloat(0, window.innerWidth)}px`
+          bubbleDOMEl.style.bottom = `${randomFloat(-200, -500)}px`
+          bubbleDOMEl.style.zIndex = 1000
+
+          animDOMEL.appendChild(bubbleDOMEl)
+        })
+
+
+      document.querySelectorAll(".bubble").forEach((bubbleDOMEl) => {
+        bubbleDOMEl.style.bottom = `${randomFloat(0, window.innerHeight - 100)}px`
+      })
+
     }
+
     let country;
     let user_location;
     let addressInput = document.querySelector('#address')
