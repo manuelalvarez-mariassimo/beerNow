@@ -36,6 +36,11 @@ h2.title {
   line-height: 1.25;
 }
 
+h1.title{
+  font-size: 3.75rem;
+  font-weight: 700;
+}
+
 a {
   color: $dark-green;
 }
@@ -55,6 +60,9 @@ nav {
     }
   }
 }
+
+section{padding: 32px 0;}
+
 
 /* ------ INDEX ------ */
 
@@ -117,6 +125,10 @@ nav {
 
 #map {
   height: 400px;
+}
+
+audio{
+  border: 1px solid red;
 }
 
 /* ------ BEERS LIST ------ */

@@ -1,48 +1,51 @@
-<section id="translate">
-  <p id="location"></p>
-  <h1>{{result}}</h1>
+<div class="results-container container">
+  <section id="translate">
+    <p id="location"></p>
+    <h1 class="title">{{result}}</h1>
+
+    <input type="hidden" id="coords" value="{{coords}}">
+
+    <audio controls>
+      <source src="http://localhost:3000/sounds/output.mp3" type="audio/mp3">
+    </audio>
+
+    <p>Listen to it</p>
+
+  </section>
+
+  <section id="bars">
+    <h2 id="bars-num"></h2>
+    <div id="map"></div>
+    <a href="/bars">See the complete list</a>
+  </section>
+
+  <section id="beers">
+    <h2>We've found<span id="beers-num"></span> local beers!</h2>
 
 
-  <input type="hidden" id="coords" value="{{coords}}">
+    {{#each beerList}}
+    <a href="/beers/details/{{this._id}}">
+      <div class="boxBeer">
+        <div class="imgBeer">
+          <img src="{{this.image}}" alt="">
+        </div>
+        <div class="descriptionBeer">
+          <h2>{{this.name}}</h2>
+          <h3>{{this.style}}</h3>
+          <p>ALC. {{this.alcohol}}% VOL</p>
+        </div>
+      </div>
+    </a>
+    {{/each}}
+    <a href="/beers/">See the complete list</a>
+  </section>
 
-  <audio controls>
-    <source src="http://localhost:3000/sounds/output.mp3" type="audio/mp3">
-  </audio>
-
-  <p>Listen to it</p>
-
-</section>
-
-<section id="bars">
-  <h2>There is <span id="bars-num"></span> near you</h2>
-  <div id="map"></div>
-  <a href="/bars">See the complete list</a>
-</section>
-
-<section id="beers">
-  <h2>We've found<span id="beers-num"></span> local beers!</h2>
-
-
-{{#each beerList}}
-<a href="/beers/details/{{this._id}}">
-<div class="boxBeer">
-  <div class="imgBeer">
-    <img src="{{this.image}}" alt="">
-  </div>
-  <div class="descriptionBeer">
-    <h2>{{this.name}}</h2>
-    <h3>{{this.style}}</h3>
-    <p>ALC. {{this.alcohol}}% VOL</p>
-  </div>
 </div>
-</a>
-{{/each}}
-  <a href="/beers/">See the complete list</a>
-</section>
-
 
 <script src="{{apiUrl}}"></script>
 <script>
+
+  let numBars = document.querySelector("#bars-num")
   let city, country;
   let coords = document.querySelector('#coords').value.split(",")
 
@@ -84,8 +87,9 @@
         `/bars-nearby/${lat}/${lng}`
       )
       .then(barsPayload => {
-        barsPayload.data.forEach(results => {
-          
+
+        numBars.innerHTML = `We've found <span >${barsPayload.data.length}</span> bars near you!`
+        barsPayload.data.forEach((results, arr) => {
           let marker = new google.maps.Marker({
             position: results.geometry.location,
             map: map,
@@ -106,4 +110,3 @@
   }
 
 </script>
-
