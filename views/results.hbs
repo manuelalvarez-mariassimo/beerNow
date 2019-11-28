@@ -1,6 +1,7 @@
 <div class="results-container container">
   <section id="translate">
-    <p id="location"></p>
+    
+    <p id="locate-message"><img src="/images/map-pin.svg" alt=""><span>You are at {{city}}, {{country}}</span></p>
     <h1 class="title">{{result}}</h1>
 
     <input type="hidden" id="coords" value="{{coords}}">
@@ -8,15 +9,14 @@
     <audio controls>
       <source src="http://localhost:3000/sounds/output.mp3" type="audio/mp3">
     </audio>
-
-    <p>Listen to it</p>
+    {{!-- <p>Listen to it</p> --}}
 
   </section>
 
-  <section id="bars">
+  <section id="bars" class="beer-head">
     <h2 id="bars-num" class="title is-4"></h2>
     <div id="map"></div>
-    <a href="/bars">See the complete list</a>
+    <a href="/bars"  class="btn button is-primary is-rounded is-medium">See the complete list</a>
   </section>
 
   <section id="beers">
@@ -25,19 +25,19 @@
 
     {{#each beerList}}
     <a href="/beers/details/{{this._id}}">
-      <div class="boxBeer">
-        <div class="imgBeer">
+      <div class="box-beer">
+        <div class="img-beer">
           <img src="{{this.image}}" alt="">
         </div>
-        <div class="descriptionBeer">
-          <h2>{{this.name}}</h2>
-          <h3>{{this.style}}</h3>
-          <p>ALC. {{this.alcohol}}% VOL</p>
+        <div class="description-beer">
+          <h2 class="title is-4">{{this.name}}</h2>
+          <h3 class="subtitle is-5">{{this.style}}</h3>
+          <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
         </div>
       </div>
     </a>
     {{/each}}
-    <a href="/beers/">See the complete list</a>
+    <a href="/beers/" class="btn button is-primary is-rounded is-medium">See the complete list</a>
   </section>
 
 </div>
@@ -46,6 +46,7 @@
 <script>
 
   let numBars = document.querySelector("#bars-num")
+  let locateMessage = document.querySelector("#locate-message")
   let city, country;
   let coords = document.querySelector('#coords').value.split(",")
 
@@ -59,7 +60,8 @@
       document.getElementById('map'),
       {
         zoom: 15,
-        center: userCenter
+        center: userCenter,
+        disableDefaultUI: true
       }
     );
 
@@ -88,13 +90,13 @@
       )
       .then(barsPayload => {
 
-        numBars.innerHTML = `We've found <span >${barsPayload.data.length}</span> bars near you!`
+        numBars.innerHTML = `There's <span >${barsPayload.data.length}</span> bars near you!`
         barsPayload.data.forEach((results, arr) => {
           let marker = new google.maps.Marker({
             position: results.geometry.location,
             map: map,
             title: results.name,
-            icon: '/images/icon-beer.png',
+            icon: '/images/beer-pin-48.svg',
           });
 
           var infowindow = new google.maps.InfoWindow({

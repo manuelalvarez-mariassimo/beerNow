@@ -11,6 +11,7 @@ $yellow: #f9bc60;
 $red: #e16162;
 $title-color: $medium-green;
 $info: $green;
+$primary: $yellow;
 $link-focus-border: $medium-green;
 
 @import "../../node_modules/bulma/bulma.sass";
@@ -22,17 +23,15 @@ $link-focus-border: $medium-green;
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   font: 14px "Poppins", sans-serif;
-  padding: 24px;
-
   background-color: $white;
 }
 
-.pages{
+.pages {
   background-color: $yellow;
 }
 
@@ -40,7 +39,7 @@ h2.title {
   line-height: 1.25;
 }
 
-h1.title{
+h1.title {
   font-size: 3.75rem;
   font-weight: 700;
 }
@@ -53,6 +52,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 24px;
 
   #logo {
     width: 175px;
@@ -65,7 +65,35 @@ nav {
   }
 }
 
-section{padding: 32px 0;}
+.btn{
+  width: 100%;
+  margin: 24px 0;
+}
+
+audio{
+  margin-bottom: 48px;
+}
+
+section {
+  padding: 32px 24px;
+}
+
+//Helper classes
+.beer-head{
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.beer-head:before{
+  content: "";
+  background-image: url('/images/beer-head.svg');
+  height: 50px;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  top: -50px;
+  position: absolute
+}
 
 
 /* ------ INDEX ------ */
@@ -127,40 +155,71 @@ section{padding: 32px 0;}
 
 /* ------ Results ------ */
 
-#map {
-  height: 400px;
+.results-container {
+  h1{
+    margin: 32px 0;
+  }
+
+  #map {
+    height: 400px;
+  }
+
+
+  #locate-message {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-weight: 600;
+
+    span {
+      text-transform: uppercase;
+      color: $medium-green;
+      margin-left: 10px;
+    }
+  }
+
+  #bars, #beers {
+    background-color: $white;
+    position: relative;
+  }
 }
 
-audio{
-  border: 1px solid red;
-}
+
 
 /* ------ BEERS LIST ------ */
-.boxBeer {
+.box-beer {
   display: flex;
   border: 1px solid silver;
   height: 150px;
 }
 
-.descriptionBeer {
+.description-beer {
   background: #f2f2f2;
   width: 100%;
+  padding: 16px 24px;
+  position: relative;
+
+  h2{
+    font-weight: 700;
+  }
+  
+  .alc{
+    color: $green;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+  }
 }
 
-.descriptionBeer h2,
-h3,
-p {
-  margin-left: 15px;
-}
 
-.imgBeer {
+.img-beer {
   width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.imgBeer img {
+.img-beer img {
   max-width: 30px;
 }
 
@@ -201,10 +260,14 @@ p {
   background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
   background-position: 0px 500px;
   background-repeat: repeat-x;
-  animation: filling 15s ease-in-out 
+  animation: filling 15s ease-in-out;
 }
 
 @keyframes filling {
-  50% {background-position: 3000px 0px;}
-  100% {background-position: 6000px 700px;}
+  50% {
+    background-position: 3000px 0px;
+  }
+  100% {
+    background-position: 6000px 700px;
+  }
 }

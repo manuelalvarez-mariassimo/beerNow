@@ -99,10 +99,11 @@ router.get('/', (req, res, next) => {
    res.render('index', {layout: false});
 });
 
-router.get('/results/:country/:lan/:coords', (req, res, next) => {
+router.get('/results/:country/:city/:lan/:coords', (req, res, next) => {
   let coords = req.params.coords
   let lan = req.params.lan
   let country = req.params.country
+  let city = req.params.city
 
 
   translateText(lan)
@@ -110,7 +111,7 @@ router.get('/results/:country/:lan/:coords', (req, res, next) => {
     apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 
     Beer.find({country}).then(beerList=> {
-      res.render("results", {apiUrl, result, beerList, coords});
+      res.render("results", {apiUrl, result, beerList, coords, country, city});
     })
   })
 

@@ -24,28 +24,28 @@
   </nav>
 
   <main>
-    <div class="home-container container">
-      <div id="address-form" class="field has-addons">
-        <div class="control">
-          <input class="input" id="address" type="text" placeholder="You can add your address here"
-            value="Piazza del Colosseo, 1, 00184 Roma RM, Italia">
+    <section>
+      <div class="home-container container">
+        <div id="address-form" class="field has-addons">
+          <div class="control">
+            <input class="input" id="address" type="text" placeholder="You can add your address here"
+              value="Piazza del Colosseo, 1, 00184 Roma RM, Italia">
+          </div>
+          <div class="control">
+            <a class="button is-info" id="address-button" onclick="animationLoad()">
+              Search
+            </a>
+          </div>
         </div>
-        <div class="control">
-          <a class="button is-info" id="address-button" onclick="animationLoad()">
-            Search
-          </a>
+
+        <div>
+          <h2 class="title is-3">Let me guess... Time for a beer, right?</h2>
+          <h3 class="subtitle is-6">Press the button and we'll<br>geolocate your position</h3>
         </div>
+
+        <button type="button" id="locate-button" onclick="animationLoad()"><img src="/images/icon-beer.svg"></button>
       </div>
-
-      <div>
-        <h2 class="title is-3">Let me guess... Time for a beer, right?</h2>
-        <h3 class="subtitle is-6">Press the button and we'll<br>geolocate your position</h3>
-      </div>
-
-      <button type="button" id="locate-button" onclick="animationLoad()"><img src="/images/icon-beer.svg"></button>
-
-
-    </div>
+    </section>
   </main>
 
 
@@ -67,11 +67,11 @@
     let myVar;
 
     addressBtn.addEventListener("click", function () {
-      myVar = setTimeout(function () { getCoords() }, 6000);
+      myVar = setTimeout(function () { getCoords() }, 5000);
     })
 
     locateBtn.addEventListener("click", function () {
-      myVar = setTimeout(function () { getGeoloc(coordsAvailable) }, 6000);
+      myVar = setTimeout(function () { getGeoloc(coordsAvailable) }, 5000);
     })
 
 
@@ -133,8 +133,9 @@
       axios.get(`https://restcountries.eu/rest/v2/all?fields=latlng;name;languages`)
         .then(res => {
           let lan, country, value, longRegex;
-          res.data.forEach(countryData => {
+          let city = coords.address[3].long_name
 
+          res.data.forEach(countryData => {
 
             for (const key in coords.address) {
               value = coords.address[key];
@@ -144,6 +145,7 @@
 
               if (countryData.name === value.short_name || countryData.name === value.long_name || countryData.name.match(longRegex)) {
                 country = countryData.name;
+
                 lan = countryData.languages[0].iso639_1;
 
                 return country, lan;
@@ -151,7 +153,7 @@
             }
           })
 
-          window.location.href = `/results/${country}/${lan}/${coords.lat},${coords.lng}`;
+          window.location.href = `/results/${country}/${city}/${lan}/${coords.lat},${coords.lng}`;
         })
     }
   </script>
