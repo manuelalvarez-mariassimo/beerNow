@@ -31,10 +31,10 @@
     "passport-instagram": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "bulma": "^0.8.0"
   },
   "devDependencies": {
-    "bulma": "^0.8.0",
     "node-sass": "^4.13.0",
     "nodemon": "^1.12.1"
   },
