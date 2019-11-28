@@ -7,7 +7,7 @@ $green: #0b7760;
 $light-green: #abd1c6;
 $light: #e8e4e6;
 $white: #ffffff;
-$yellow: #f9bc60;
+$yellow: #ecc145;
 $red: #e16162;
 $title-color: $medium-green;
 $info: $green;
@@ -31,7 +31,7 @@ body {
   background-color: $white;
 }
 
-.pages {
+.page-result {
   background-color: $yellow;
 }
 
@@ -48,11 +48,12 @@ a {
   color: $dark-green;
 }
 
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px;
+  padding: 24px 24px 16px;
 
   #logo {
     width: 175px;
@@ -64,6 +65,7 @@ nav {
     }
   }
 }
+
 
 .btn.button {
   width: 100%;
@@ -80,7 +82,7 @@ audio {
 }
 
 section {
-  padding: 32px 24px;
+  padding: 24px;
 }
 
 footer {
@@ -91,8 +93,11 @@ footer {
 }
 
 //Helper classes
+.white{background-color: $white}
+
 .beer-head {
   margin-top: 20px;
+  position: relative;
   padding-top: 10px;
 }
 
@@ -103,8 +108,12 @@ footer {
   width: 100vw;
   left: 0;
   right: 0;
-  top: -50px;
+  top: -48px;
   position: absolute;
+}
+
+.beer-head.beer-head-yellow:before{
+  background-image: url("/images/beer-head-yellow.svg");
 }
 
 /* ------ INDEX ------ */
@@ -196,6 +205,45 @@ footer {
 }
 
 /* ------ BEERS LIST ------ */
+.list-container {
+
+  .header{
+    background-color: $white;
+
+    h2.title{
+      line-height: 1.2;
+    }
+  
+    .subtitle{
+      margin-bottom: 24px;
+    }
+  }
+
+  .content{
+    background-color: $yellow;
+
+    .cards-parent{
+      margin-top: -60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      
+      .card-item{
+        width:29%;
+        margin: 0 2%;
+      }
+
+      @media (max-width: 800px){
+        .card-item{width: 50%}
+      }
+
+      @media (max-width: 600px){
+        .card-item{width: 100%}
+      }
+    }
+  }
+}
+
 .box-item {
   display: flex;
   border: 1px solid silver;
@@ -231,6 +279,16 @@ footer {
   }
 }
 
+
+.bar-card{
+  .img-round img{
+    border-radius: 10px;
+  }
+
+  .content{
+    margin: 8px 0 48px; 
+  }
+}
 /* ------ BEERS DETAILS ------ */
 
 .imgDetails {

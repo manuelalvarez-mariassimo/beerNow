@@ -18,11 +18,10 @@ router.get("/:lat/:long", (req, res, next) => {
       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.params.lat},${req.params.long}&radius=1500&type=bar&opennow=true&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
     )
     .then(payLoad => {
-
       let newBar = payLoad.data.results;
 
       Promise.all(
-        newBar.map(bar=>{
+        newBar.map(bar => {
           return Bar.create({
             name: bar.name,
             location: {
@@ -34,19 +33,23 @@ router.get("/:lat/:long", (req, res, next) => {
             },
             address: bar.vicinity,
             rate: bar.rating,
-            // images: [bar.photos.url],
+            images: addImages()
             // comments: [null]
           });
+
+          function addImages() {
+            let arr = [];
+            bar.photos.forEach(el => {
+              arr.push(el.photo_reference);
+            });
+            return arr;
+          }
         })
       )
-      .then((bars)=>{
-        // Bar.find(bars)
-        // .populate()
-        // .then()
-        res.render('bars/list', {bars})
-      })
-      .catch((err)=>console.log(err))
-
+        .then(bars => {
+          res.render("bars/list", { bars });
+        })
+        .catch(err => console.log(err));
     });
 });
 
