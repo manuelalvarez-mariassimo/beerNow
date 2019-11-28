@@ -7114,6 +7114,9 @@ body {
   padding: 24px;
   background-color: #ffffff; }
 
+.pages {
+  background-color: #f9bc60; }
+
 h2.title {
   line-height: 1.25; }
 
@@ -7237,7 +7240,7 @@ p {
   width: 100vw;
   height: 100vh;
   background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
-  background-position: 0px 700px;
+  background-position: 0px 500px;
   background-repeat: repeat-x;
   animation: filling 15s ease-in-out; }
 

@@ -1,56 +1,120 @@
-<div class="home-container container">
-  <div id="address-form" class="field has-addons">
-    <div class="control">
-      <input class="input" id="address" type="text" placeholder="You can add your address here"
-        value="Piazza del Colosseo, 1, 00184 Roma RM, Italia">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="https://kit.fontawesome.com/9c01b07d37.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+</head>
+
+<body>
+
+  <div id="animation"></div>
+  <nav>
+    <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
+    <div class="menu">
+      <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Signup</a>
     </div>
-    <div class="control">
-      <a class="button is-info" id="address-button" onclick="animationLoad()">
-        Search
-      </a>
+  </nav>
+
+  <main>
+    <div class="home-container container">
+      <div id="address-form" class="field has-addons">
+        <div class="control">
+          <input class="input" id="address" type="text" placeholder="You can add your address here"
+            value="Piazza del Colosseo, 1, 00184 Roma RM, Italia">
+        </div>
+        <div class="control">
+          <a class="button is-info" id="address-button" onclick="animationLoad()">
+            Search
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="title is-3">Let me guess... Time for a beer, right?</h2>
+        <h3 class="subtitle is-6">Press the button and we'll<br>geolocate your position</h3>
+      </div>
+
+      <button type="button" id="locate-button" onclick="animationLoad()"><img src="/images/icon-beer.svg"></button>
+
+
     </div>
-  </div>
-
-  <div>
-    <h2 class="title is-3">Let me guess... Time for a beer, right?</h2>
-    <h3 class="subtitle is-6">Press the button and we'll<br>geolocate your position</h3>
-  </div>
-
-  <button type="button" id="locate-button" onclick="animationLoad()"><img src="/images/icon-beer.svg"></button>
+  </main>
 
 
-</div>
-
-<script>
-
-let animDOMEL = document.querySelector('#animation')
-
-function animationLoad(){
-  animDOMEL.classList.add("cup")
-}
 
 
-  let country;
-  let user_location;
-  let addressInput = document.querySelector('#address')
-  let addressBtn = document.querySelector('#address-button')
-  let locateBtn = document.querySelector('#locate-button')
+  <script>
 
-  addressBtn.onclick = getCoords
-  locateBtn.addEventListener("click", function () {
-    getGeoloc(coordsAvailable)
-  })
+    let animDOMEL = document.querySelector('#animation')
+
+    function animationLoad() {
+      animDOMEL.classList.add("cup")
+    }
+    let country;
+    let user_location;
+    let addressInput = document.querySelector('#address')
+    let addressBtn = document.querySelector('#address-button')
+    let locateBtn = document.querySelector('#locate-button')
+
+    let myVar;
+
+    addressBtn.addEventListener("click", function () {
+      myVar = setTimeout(function () { getCoords() }, 6000);
+    })
+
+    locateBtn.addEventListener("click", function () {
+      myVar = setTimeout(function () { getGeoloc(coordsAvailable) }, 6000);
+    })
 
 
-  function getCoords() {
-    // how to pass coords to url
-    if (addressInput.value) {
-      let addressStr = addressInput.value
+    function getCoords() {
+      // how to pass coords to url
+      if (addressInput.value) {
+        let addressStr = addressInput.value
 
-      return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressStr}&language=en&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+        return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressStr}&language=en&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
+          .then(addressPayLoad => {
+
+            console.log(addressPayLoad)
+            return coords = {
+              lat: addressPayLoad.data.results[0].geometry.location.lat,
+              lng: addressPayLoad.data.results[0].geometry.location.lng,
+              address: addressPayLoad.data.results[0].address_components
+            }
+
+          })
+          .then(coords => {
+            getLanguage(coords)
+          })
+      }
+    }
+
+
+
+    function getGeoloc(cb) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        return cb(pos);
+      })
+    }
+
+
+    function coordsAvailable(pos) {
+      let coords = {
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude
+      };
+      console.log(coords);
+
+      return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&language=en&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
         .then(addressPayLoad => {
-
-          console.log(addressPayLoad)
           return coords = {
             lat: addressPayLoad.data.results[0].geometry.location.lat,
             lng: addressPayLoad.data.results[0].geometry.location.lng,
@@ -62,63 +126,36 @@ function animationLoad(){
           getLanguage(coords)
         })
     }
-  }
 
 
 
-  function getGeoloc(cb) {
-    navigator.geolocation.getCurrentPosition(pos => {
-      return cb(pos);
-    })
-  }
+    function getLanguage(coords) {
+      axios.get(`https://restcountries.eu/rest/v2/all?fields=latlng;name;languages`)
+        .then(res => {
+          let lan, country, value, longRegex;
+          res.data.forEach(countryData => {
 
 
-  function coordsAvailable(pos) {
-    let coords = {
-      lat: pos.coords.latitude,
-      lng: pos.coords.longitude
-    };
-    console.log(coords);
+            for (const key in coords.address) {
+              value = coords.address[key];
+              //console.log(countryData.name, value.long_name, value.short_name)
 
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&language=en&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`)
-      .then(addressPayLoad => {
-        return coords = {
-          lat: addressPayLoad.data.results[0].geometry.location.lat,
-          lng: addressPayLoad.data.results[0].geometry.location.lng,
-          address: addressPayLoad.data.results[0].address_components
-        }
+              longRegex = new RegExp(/^value.long_name{0,10}$/);
 
-      })
-      .then(coords => {
-        getLanguage(coords)
-      })
-  }
+              if (countryData.name === value.short_name || countryData.name === value.long_name || countryData.name.match(longRegex)) {
+                country = countryData.name;
+                lan = countryData.languages[0].iso639_1;
 
-
-
-  function getLanguage(coords) {
-    axios.get(`https://restcountries.eu/rest/v2/all?fields=latlng;name;languages`)
-      .then(res => {
-        let lan, country, value, longRegex;
-        res.data.forEach(countryData => {
-
-
-          for (const key in coords.address) {
-            value = coords.address[key];
-            //console.log(countryData.name, value.long_name, value.short_name)
-
-            longRegex = new RegExp(/^value.long_name{0,10}$/);
-
-            if (countryData.name === value.short_name || countryData.name === value.long_name || countryData.name.match(longRegex)) {
-              country = countryData.name;
-              lan = countryData.languages[0].iso639_1;
-
-              return country, lan;
+                return country, lan;
+              }
             }
-          }
-        })
+          })
 
-        window.location.href = `/results/${country}/${lan}/${coords.lat},${coords.lng}`;
-      })
-  }
-</script>
+          window.location.href = `/results/${country}/${lan}/${coords.lat},${coords.lng}`;
+        })
+    }
+  </script>
+
+</body>
+
+</html>
