@@ -324,10 +324,15 @@ footer {
     padding: 32px 0;
   }
 
-
-
   .content{
     background-color: $yellow;
+
+    .info{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .description p {line-height: 1.35;}
   }
 }
 .imgDetails {
@@ -335,13 +340,20 @@ footer {
   position: relative;
   justify-content: center;
   align-items: center;
-  border: 2px solid silver;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  background-color: $white;
 }
 
 .likes {
   position: absolute;
-  top: 5%;
-  left: 85%;
+  top: 4%;
+  left: 88%;
+  
+  i{
+    font-size: 28px;
+  }
 }
 
 .imgDetails img {
