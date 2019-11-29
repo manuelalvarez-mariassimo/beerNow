@@ -128,7 +128,7 @@ return User.deleteMany()
             style : "Traditional German-Style Bock",
             description : "Birra Moretti La Rossa is a double boch beer produced using high quality 100% malted barley, giving it a rich sweet taste and an intense fragrance of roasted malt. The amber color that characterizes the beer, comes from the kind of malt used in the recipe (malt is dried, roasted barley). Another key ingredient is hops, the variety used is particularly aromatic, giving a characteristic bitter aftertaste and a delicate fragrance to the beer. The Master Brewers advise a service temperature between 10° and 12°C.",
             rate: 3.5,
-            alcohol : 40,
+            alcohol : 7.0,
             image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7789_800x.jpg?v=1567143075",
             comments : [
               commentsArr[3]._id,
@@ -140,8 +140,47 @@ return User.deleteMany()
             country : "Italy",
             style : "Pale Lager",
             description : "Peroni Nastro Azzurro is a crisp and refreshing beer crafted with passion and flair to offer a delicate balance of bitterness and subtle citrus aromatic notes.",
-            rate: 3.5,
-            alcohol : 40,
+            rate: 4.7,
+            alcohol : 5.1,
+            image : "https://res.cloudinary.com/ratebeer/image/upload/e_trim:1/d_beer_img_default.png,f_auto/beer_3029",
+            comments : [
+              commentsArr[3]._id,
+              commentsArr[4]._id
+            ],
+          },
+          {
+            name : "Dreher",
+            country : "Italy",
+            style : "Light Pale Lager",
+            description : "Good clearness, golden color, little white head but taste is watery..little bitter,  metallic and cardboard hints. Nothing that could get even close to a lager",
+            rate: 2.5,
+            alcohol : 4.7,
+            image : "https://i.pinimg.com/originals/4c/ab/85/4cab8536538d2cbb81f87a97f1662b40.jpg",
+            comments : [
+              commentsArr[3]._id,
+              commentsArr[4]._id
+            ],
+          },
+          {
+            name : "Forst Sixtus",
+            country : "Italy",
+            style : "Bock - DoppelBock",
+            description : "The famous, highly popular strong Forst Beer. The special malts used and the specific production process help to create its unique caramel flavour. It is immensely, unforgettably satisfying from the first sip. Its dark colour and delicate hoppy notes evoke memories of the original strong beers and the traditional art of beer making in monasteries. Suggested serving temperature 7°C.",
+            rate: 4.5,
+            alcohol : 6.5,
+            image : "https://www.wine-searcher.com/images/labels/65/16/10616516.jpg",
+            comments : [
+              commentsArr[2]._id,
+              commentsArr[4]._id
+            ],
+          },
+          {
+            name : "Poretti 4 Luppoli Originale",
+            country : "Italy",
+            style : "Pale Lager",
+            description : "4 Luppoli Originale (Original beer with 4 hops varieties) is a low fermentation lager with a particularly harmonious flavour. Fruity aromatic notes sweeten its moderately bitter taste.",
+            rate: 4.2,
+            alcohol : 5.5,
             image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7789_800x.jpg?v=1567143075",
             comments : [
               commentsArr[3]._id,
@@ -149,52 +188,13 @@ return User.deleteMany()
             ],
           },
           {
-            name : "Moretti La Rossa",
+            name : "Menabrea Bionda",
             country : "Italy",
-            style : "Traditional German-Style Bock",
-            description : "Birra Moretti La Rossa is a double boch beer produced using high quality 100% malted barley, giving it a rich sweet taste and an intense fragrance of roasted malt. The amber color that characterizes the beer, comes from the kind of malt used in the recipe (malt is dried, roasted barley). Another key ingredient is hops, the variety used is particularly aromatic, giving a characteristic bitter aftertaste and a delicate fragrance to the beer. The Master Brewers advise a service temperature between 10° and 12°C.",
+            style : "Pale Lager",
+            description : "Menabrea is matured gently in the perfect temperature of our cave cellars for a taste of superior clarity. This 4.8% ABV pale lager is well balanced between citrus, bitter tones and floral, fruity undertones giving a consistent and refined flavour. It has a complicated malty, hoppy taste with an exceptional head retention due to the quality of our ingredients and maturation process.",
             rate: 3.5,
-            alcohol : 40,
-            image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7789_800x.jpg?v=1567143075",
-            comments : [
-              commentsArr[3]._id,
-              commentsArr[4]._id
-            ],
-          },
-          {
-            name : "Moretti La Rossa",
-            country : "Italy",
-            style : "Traditional German-Style Bock",
-            description : "Birra Moretti La Rossa is a double boch beer produced using high quality 100% malted barley, giving it a rich sweet taste and an intense fragrance of roasted malt. The amber color that characterizes the beer, comes from the kind of malt used in the recipe (malt is dried, roasted barley). Another key ingredient is hops, the variety used is particularly aromatic, giving a characteristic bitter aftertaste and a delicate fragrance to the beer. The Master Brewers advise a service temperature between 10° and 12°C.",
-            rate: 3.5,
-            alcohol : 40,
-            image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7789_800x.jpg?v=1567143075",
-            comments : [
-              commentsArr[3]._id,
-              commentsArr[4]._id
-            ],
-          },
-          {
-            name : "Moretti La Rossa",
-            country : "Italy",
-            style : "Traditional German-Style Bock",
-            description : "Birra Moretti La Rossa is a double boch beer produced using high quality 100% malted barley, giving it a rich sweet taste and an intense fragrance of roasted malt. The amber color that characterizes the beer, comes from the kind of malt used in the recipe (malt is dried, roasted barley). Another key ingredient is hops, the variety used is particularly aromatic, giving a characteristic bitter aftertaste and a delicate fragrance to the beer. The Master Brewers advise a service temperature between 10° and 12°C.",
-            rate: 3.5,
-            alcohol : 40,
-            image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7789_800x.jpg?v=1567143075",
-            comments : [
-              commentsArr[3]._id,
-              commentsArr[4]._id
-            ],
-          },
-          {
-            name : "Moretti La Rossa",
-            country : "Italy",
-            style : "Traditional German-Style Bock",
-            description : "Birra Moretti La Rossa is a double boch beer produced using high quality 100% malted barley, giving it a rich sweet taste and an intense fragrance of roasted malt. The amber color that characterizes the beer, comes from the kind of malt used in the recipe (malt is dried, roasted barley). Another key ingredient is hops, the variety used is particularly aromatic, giving a characteristic bitter aftertaste and a delicate fragrance to the beer. The Master Brewers advise a service temperature between 10° and 12°C.",
-            rate: 3.5,
-            alcohol : 40,
-            image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7789_800x.jpg?v=1567143075",
+            alcohol : 4.8,
+            image : "https://cdn.shopify.com/s/files/1/1968/6329/products/IMG_7790_800x.jpg?v=1558759315",
             comments : [
               commentsArr[3]._id,
               commentsArr[4]._id
