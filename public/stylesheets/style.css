@@ -7157,8 +7157,28 @@ audio {
 section {
   padding: 24px; }
 
+.pages body {
+  background-color: #ffffff; }
+
+.pages nav {
+  background-color: #ecc145; }
+
+.pages .list-container .header,
+.pages .details-container .header {
+  background-color: #ecc145;
+  margin-top: -1px; }
+
 .page-result footer {
   background-color: #ffffff; }
+
+.page-result {
+  background-color: #ffffff; }
+
+.page-result nav {
+  background-color: #ecc145; }
+
+.page-result .results-container {
+  background-color: #ecc145; }
 
 footer {
   margin-top: auto;
@@ -7185,7 +7205,7 @@ footer {
   width: 100vw;
   left: 0;
   right: 0;
-  top: -48px;
+  top: -49px;
   position: absolute; }
 
 .beer-head.beer-head-yellow:before {
@@ -7235,6 +7255,9 @@ footer {
 .results-container h1 {
   margin: 32px 0; }
 
+.results-container #translate {
+  margin-top: -1px; }
+
 .results-container #map {
   height: 400px; }
 
@@ -7266,7 +7289,7 @@ footer {
     margin-bottom: 24px; }
 
 .list-container .content {
-  background-color: #ecc145; }
+  background-color: #ffffff; }
   .list-container .content .cards-parent {
     margin-top: -60px;
     display: flex;
@@ -7326,7 +7349,7 @@ footer {
   padding: 32px 0; }
 
 .details-container .content {
-  background-color: #ecc145; }
+  background-color: #ffffff; }
   .details-container .content .info {
     display: flex;
     justify-content: space-between; }

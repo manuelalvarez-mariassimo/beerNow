@@ -3,7 +3,6 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
 const Bar = require("../models/Bar");
-
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 // Bcrypt to encrypt passwords
@@ -14,24 +13,15 @@ router.get("/login", (req, res, next) => {
   res.render("auth/login", { layout: false });
 });
 
-router.get("/profile/:id", (req, res, next) => {
-  
-  // if (req.session.currentUser) {
-  //   console.log(req.session.currentUser)
-
+router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
     Bar.find().then(b => console.log(b));
     User.findById(req.params.id)
       .populate("favoriteBars")
       .populate("favoriteBeers")
       .then(user => {
-        console.log(user);
-        // res.json(user.favoriteBeers[0].name)
         res.render("auth/profile", { user: user, layout: false });
       })
       .catch(err => console.log(err));
-  // } else {
-  //   res.redirect("/");
-  // }  
 });
 
 
