@@ -7274,6 +7274,10 @@ footer {
       .list-container .content .cards-parent .card-item {
         width: 100%; } }
 
+.cards-parent > a {
+  width: 100%;
+  margin-bottom: 24px; }
+
 .box-item {
   display: flex;
   border: 1px solid silver;
@@ -7291,6 +7295,7 @@ footer {
       right: 8px;
       bottom: 8px; }
   .box-item .img-container {
+    background-color: white;
     width: 45%;
     display: flex;
     justify-content: center;

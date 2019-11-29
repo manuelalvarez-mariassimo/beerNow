@@ -1,18 +1,26 @@
-<h2>Una birra, per favore!</h2>
-
-<p class="title is-4">There is {{beers.length}} local beers for you</p>
-
-{{#each beers}}
-<a href="/beers/details/{{this._id}}">
-  <div class="box-item">
-    <div class="img-container">
-      <img src="{{this.images}}" alt="">
+<div class="list-container bn-container">
+  <section class="header">
+    <div class="container">
+      <h2 class="title is-2 has-text-weight-bold">Beers</h2>
+      <p class="subtitle is-4">There are {{beers.length}} beers near you</p>
     </div>
-    <div class="description">
-      <h2 class="title is-4">{{this.name}}</h2>
-      <h3 class="subtitle is-5">{{this.style}}</h3>
-      <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
+  </section>
+  <section class="content beer-head beer-head-yellow">
+    <div class="container  cards-parent">
+      {{#each beers}}
+      <a href="/beers/details/{{this._id}}">
+        <div class="box-item">
+          <div class="img-container">
+            <img src="{{this.image}}" alt="">
+          </div>
+          <div class="description">
+            <h2 class="title is-4">{{this.name}}</h2>
+            <h3 class="subtitle is-6">{{this.style}}</h3>
+            <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
+          </div>
+        </div>
+      </a>
+      {{/each}}
     </div>
-  </div>
-</a>
-{{/each}}
+  </section>
+</div>
