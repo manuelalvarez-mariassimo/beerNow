@@ -66,7 +66,7 @@
         url = url.split("/")
         url = url.pop()
 
-        axios.post(`http://localhost:3000/bars/favorites/`, { url: url })
+        axios.post(`/bars/favorites/`, { url: url })
             .then(a => console.log(a))
             .catch(a => console.log(a))
 

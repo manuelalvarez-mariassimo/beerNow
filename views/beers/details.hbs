@@ -71,7 +71,7 @@ document.getElementById("likes").onclick = () => {
   url = url.split("/")
   url = url.pop()
 
-  axios.post(`http://localhost:3000/beers/favorites/`, {url: url})
+  axios.post(`/beers/favorites/`, {url: url})
   .then(a=>console.log(a))
   .catch(a=>console.log(a))
 
