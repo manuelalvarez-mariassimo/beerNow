@@ -15,7 +15,7 @@ const Comment = require("../models/Comments.js");
 
 router.get("/", (req, res) => {
   Beer.find().then(beers => {
-    res.render("beers/list", { beers });
+    res.render("beers/list", { beers: beers, user: req.user });
   });
 });
 
@@ -32,7 +32,7 @@ router.get("/details/:id", (req, res, next) => {
         model: "User"
       }
     ])
-    .then(beers => res.render("beers/details", beers));
+    .then(beers => res.render("beers/details", {beers: beers, user: req.user}));
 });
 
 router.post("/details/:id", (req, res, next) => {

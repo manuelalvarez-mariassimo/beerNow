@@ -98,7 +98,7 @@ router.get('/bars-nearby/:lat/:long', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-   res.render('index', {layout: false});
+   res.render('index', { user: req.user, layout: false});
 });
 
 router.get('/results/:country/:city/:lan/:coords', (req, res, next) => {
@@ -113,7 +113,7 @@ router.get('/results/:country/:city/:lan/:coords', (req, res, next) => {
 
     Beer.find({country}).then(beerList=> {
       res.render("results", {
-        layout: false, apiUrl, result, beerList, coords, country, city
+        layout: false, apiUrl, result, beerList, coords, country, city, user: req.user
       });
     })
   })

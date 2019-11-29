@@ -3,6 +3,7 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
 const Bar = require("../models/Bar");
+const ensureLogin = require("connect-ensure-login")
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
@@ -11,10 +12,10 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { layout: false });
+  res.render("auth/login", { user: req.user, layout: false });
 });
 
-router.get("/profile/:id", (req, res, next) => {
+router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   
   // if (req.session.currentUser) {
   //   console.log(req.session.currentUser)
@@ -26,7 +27,7 @@ router.get("/profile/:id", (req, res, next) => {
       .then(user => {
         console.log(user);
         // res.json(user.favoriteBeers[0].name)
-        res.render("auth/profile", { user: user, layout: false });
+        res.render("auth/profile", { user: req.user, layout: false });
       })
       .catch(err => console.log(err));
   // } else {
@@ -46,7 +47,7 @@ router.post(
 );
 
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup", {layout: false});
+  res.render("auth/signup", {user: req.user, layout: false});
 });
 
 router.post("/signup", (req, res, next) => {

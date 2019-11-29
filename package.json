@@ -33,7 +33,8 @@
     "passport-instagram": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "swag": "^0.7.0"
   },
   "devDependencies": {
     "node-sass": "^4.13.0",

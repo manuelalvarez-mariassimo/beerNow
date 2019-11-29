@@ -17,7 +17,7 @@ router.get("/:id", (req, res, next) => {
       model : "User"
     }])
     .then(barFound => {
-      res.render("bars/details", barFound);
+      res.render("bars/details", {barFound: barFound ,user: req.user});
     });
 });
 
@@ -72,7 +72,7 @@ router.get("/:lat/:long", (req, res, next) => {
         })
       )
         .then(bars => {
-          res.render("bars/list", { bars });
+          res.render("bars/list", { bars: bars ,user: req.user });
         })
         .catch(err => console.log(err));
     });
