@@ -7113,6 +7113,9 @@ body {
   font: 14px "Poppins", sans-serif;
   background-color: #ffffff; }
 
+main {
+  position: relative; }
+
 .page-result {
   background-color: #ecc145; }
 
@@ -7152,7 +7155,7 @@ section {
   padding: 24px; }
 
 footer {
-  background-color: #ffffff;
+  position: relative;
   text-align: center;
   border-top: 1px solid #ccc;
   padding: 16px 0; }
@@ -7346,7 +7349,7 @@ footer {
   background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
   background-position: 0px 500px;
   background-repeat: repeat-x;
-  animation: filling 15s ease-in-out;
+  animation: filling 15s ease-in-out infinite;
   overflow: hidden; }
 
 @keyframes filling {

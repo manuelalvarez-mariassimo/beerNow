@@ -31,6 +31,10 @@ body {
   background-color: $white;
 }
 
+main{
+  position: relative;
+}
+
 .page-result {
   background-color: $yellow;
 }
@@ -86,7 +90,7 @@ section {
 }
 
 footer {
-  background-color: $white;
+  position: relative;
   text-align: center;
   border-top: 1px solid #ccc;
   padding: 16px 0;
@@ -354,7 +358,7 @@ footer {
   background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
   background-position: 0px 500px;
   background-repeat: repeat-x;
-  animation: filling 15s ease-in-out;
+  animation: filling 15s ease-in-out infinite;
   overflow: hidden;
 }
 

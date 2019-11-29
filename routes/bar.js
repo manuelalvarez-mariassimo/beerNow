@@ -17,7 +17,6 @@ router.get("/:id", (req, res, next) => {
       model : "User"
     }])
     .then(barFound => {
-      console.log(barFound);
       res.render("bars/details", barFound);
     });
 });
@@ -45,6 +44,8 @@ router.get("/:lat/:long", (req, res, next) => {
     )
     .then(payLoad => {
       let newBar = payLoad.data.results;
+
+      console.log(newBar)
 
       Promise.all(
         newBar.map(bar => {
