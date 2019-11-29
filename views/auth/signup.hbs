@@ -1,52 +1,125 @@
-<h3>Sign up with an existing account</h3>
+<!DOCTYPE html>
+<html lang="en">
 
-<a href="/auth/google"><i class="fab fa-google fa-2x"></i></a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css"> --}}
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="https://kit.fontawesome.com/9c01b07d37.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+</head>
 
-{{!-- <i class="fab fa-instagram fa-2x"></i>
-<i class="fab fa-twitter-square fa-2x"></i> --}}
+<body class="page-result">
+  <nav class="container">
+    <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
+    <div class="menu">
+      <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Signup</a>
+    </div>
+  </nav>
 
-<h3>or create a new one</h3>
+  <main>
+
+    <div class="results-container bn-container">
+      <section id="translate">
+        <div class="container">
+
+          <h3 class="text-login login-bold">Sign up with an existing account</h3>
+
+          <div class="googleIcon">
+            <a class="text-login" href="/auth/google"><i class="fab fa-google fa-2x"></i></a>
+          </div>
+
+        </div>
+      </section>
+
+      <br><br>
+      <section id="bars" class="beer-headLogin">
+        <div class="container">
+          <h3 class="text-login textOrAccount">or create a new one</h3>
+          <form action="/auth/signup" method="POST" id="form-container">
+            <div class="username">
+              <label for="username">Username</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="username" class="input" type="text" name="username" placeholder="Username">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="email">
+              <label for="email">Email</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="email" class="input" type="email" name="email" placeholder="Email">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="country">
+              <label for="country">Country</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="country" class="input" type="country" name="country" placeholder="Country">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-flag"></i>
+                </span>
+              </div>
+            </div>
+
+            <br>
 
 
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="Username">
+            <div class="city">
+              <label for="city">City</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="city" class="input" type="city" name="city" placeholder="City">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-building"></i>
+                </span>
+              </div>
+            </div>
 
-  <br><br>
+            <br>
 
-  <label for="email">Email</label>
-  <input id="email" type="email" name="email" placeholder="Email">
+            <div class="password">
+              <label for="password">Password</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="password" class="input" type="password" name="password" placeholder="Password">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-key"></i>
+                </span>
+              </div>
+            </div>
 
-  <br><br>
+            <br>
 
-  <label for="country">Country</label>
-  <input id="country" type="country" name="country" placeholder="Country">
 
-  <br><br>
+            <button id="bars-link" href="" class="btn button is-primary is-rounded is-medium">SIGN UP NOW</button> <p
+                class="account-message">
+                Already registered?
+                <a href="/auth/login" class="text-signup">Login</a>
+                </p>
+          </form>
+        </div>
+      </section>
 
-  <label for="city">City</label>
-  <input id="city" type="city" name="city" placeholder="City">
 
-  <br><br>
+    </div>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Password">
+  </main>
 
-  {{!-- <br><br>
+  <footer>
+    <a>BeerNow © 2019</a>
+  </footer>
+</body>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password"> --}}
-  <br>
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>SIGN UP NOW</button>
-
-  <p class="account-message">
-    Already registered?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+</html>

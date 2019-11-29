@@ -46,7 +46,7 @@ router.post(
 );
 
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", {layout: false});
 });
 
 router.post("/signup", (req, res, next) => {
