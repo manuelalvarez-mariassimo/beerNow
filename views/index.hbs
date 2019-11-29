@@ -20,16 +20,8 @@
   <nav>
     <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
     <div class="menu">
-      {{#if username}}
-        <a href="/auth/profile">{{username.username}}</a>
-        <a href="/auth/logout">Logout</a>
-      {{/if}}
-
-      {{#unless username}}
-        <a href="/auth/signup">Signup</a>
-        <a href="/auth/login">Login</a>
-      {{/unless}}
-
+       <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Signup</a>
     </div>
   </nav>
 

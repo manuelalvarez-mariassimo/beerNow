@@ -20,6 +20,7 @@ const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
 
 // Instantiates a client
 const translationClient = new TranslationServiceClient();
+
 async function translateText(targetLanguage) {
   let sourceLanguage;
 
@@ -41,6 +42,7 @@ async function translateText(targetLanguage) {
 
   // Run request
   const [response] = await translationClient.translateText(request);
+  console.log(response)
 
   let transText;
 
@@ -49,9 +51,13 @@ async function translateText(targetLanguage) {
   }
 
     // Create audio Text to Speach
-    main(transText, targetLanguage)
+    await main(transText, targetLanguage)
     return transText;
-}
+    // .then(()=>{
+      
+    //   return transText;
+    // })
+  }
 
 
 // Google Text to Speech Api

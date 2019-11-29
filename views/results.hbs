@@ -16,8 +16,8 @@
   <nav class="container">
     <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
     <div class="menu">
-      <a href="/auth/{{path}}">{{name}}</a>
-      <a href="/auth/logout">Logout</a>
+       <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Signup</a>
     </div>
   </nav>
 
@@ -33,7 +33,7 @@
           <input type="hidden" id="coords" value="{{coords}}">
 
           <audio controls>
-            <source src="http://localhost:3000/sounds/output.mp3" type="audio/mp3">
+            <source type="audio/mp3">
           </audio>
           {{!-- <p>Listen to it</p> --}}
 
@@ -144,6 +144,8 @@
           })
           .catch(err => console.log(err));
       }
+
+      document.querySelector("audio").setAttribute("src", "http://localhost:3000/sounds/output.mp3?maria=" + Math.round(Math.random() * 978234978234798234))
 
     </script>
   </main>
