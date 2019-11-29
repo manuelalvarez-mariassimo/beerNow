@@ -3,6 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 const Bar = require("../models/Bar");
+const axios = require("axios").default
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
@@ -40,6 +41,8 @@ router.post("/login", passport.authenticate("local", {
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
+
+
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;

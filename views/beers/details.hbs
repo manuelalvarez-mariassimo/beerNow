@@ -5,7 +5,10 @@
   </div>
   <div class="imgDetails">
     <div class="likes">
-      <i class="far fa-heart fa-3x"></i>
+      <button id="likes">
+        <i class="far fa-heart fa-3x"></i>
+      </button>
+
     </div>
     <img src="{{image}}" alt="">
   </div>
@@ -39,5 +42,13 @@
     <p>14 Comments on this beer</p>
   </div>
 
+<input type="hidden" value="{{_id}}">
 
 </div>
+
+<script>
+
+send("POST", "/beers/details/:id", returnFormData( {{_id}} ), 'html')
+
+
+</script>
