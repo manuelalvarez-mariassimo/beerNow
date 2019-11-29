@@ -53,10 +53,6 @@ async function translateText(targetLanguage) {
     // Create audio Text to Speach
     await main(transText, targetLanguage)
     return transText;
-    // .then(()=>{
-      
-    //   return transText;
-    // })
   }
 
 

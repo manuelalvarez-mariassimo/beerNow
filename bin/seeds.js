@@ -200,6 +200,7 @@ return User.deleteMany()
               commentsArr[4]._id
             ],
           },
+          // Spanish beers
           {
             name : "Estrella Galicia",
             country : "Spain",
@@ -208,6 +209,71 @@ return User.deleteMany()
             rate: 4.4,
             alcohol : 40,
             image : "https://res.cloudinary.com/ratebeer/image/upload/e_trim:1/d_beer_img_default.png,f_auto/beer_11325",
+            comments : [              
+              commentsArr[4]._id,
+              commentsArr[5]._id
+            ],         
+          },
+          {
+            name : "San Miguel",
+            country : "Spain",
+            style : "Light Pale Lager",
+            description : "Clear golden appearance with thick frothy white head. Strong aroma of typical lager. Quite a sweet taste.",
+            rate: 2.13,
+            alcohol : 4.8,
+            image : "https://birrapedia.com/img/modulos/cerveza/75f/san-miguel-especial_15114329045921_t.jpg",
+            comments : [              
+              commentsArr[1]._id,
+              commentsArr[5]._id
+            ],         
+          },
+          {
+            name : "Heineken",
+            country : "Spain",
+            style : "Lager - Euro Pale",
+            description : "Born in 1972 as “Especial Rivera”, it would soon become Company’s most representative beer.  Brewed by Hijos de Rivera’s Brewmasters in the only Company’s brewery placed in A Coruña. It takes a whole month to be brewed, half of it inside the maturing tanks. Golden color. Clean and bright. Excellent aromatic balance between malts and hops. Lightly floral and herbal flavors, with a moderate warm mouthfeel, and an intense hoppy bitter taste that lingers in the mouth.",
+            rate: 3,
+            alcohol : 4.3,
+            image : "Heineken is a 5% ABV euro pale lager, made by Heineken International since 1873. It is available in a 4.3% alcohol by volume, in countries such as Ireland. It is the flagship product of the company and is made of purified water, malted barley, hops, and yeast.",
+            comments : [              
+              commentsArr[4]._id,
+              commentsArr[5]._id
+            ],         
+          },
+          {
+            name : "Mahou Cinco Estrellas",
+            country : "Spain",
+            style : "Lager- Pale",
+            description : " Las mejores variedades de lúpulo y levadura se concentran en Mahou Cinco Estrellas. Una cerveza dorada, de espuma cremosa y consistente, con un sabor característico, moderado y fino, de aroma afrutado.",
+            rate: 4.4,
+            alcohol : 40,
+            image : "https://www.encopadebalon.com/3548-large_default/cerveza-mahou-5-estrellas-pack-24-botellines.jpg",
+            comments : [              
+              commentsArr[4]._id,
+              commentsArr[5]._id
+            ],         
+          },
+          {
+            name : "Estrella Levante",
+            country : "Spain",
+            style : "Pilsen Lager",
+            description : " Se recomiendo el consumo en cañas cortas y a una temperatura de entre 4º y 6ºC. Se comercializa en botella de 20cl, 25cl, 33cl, 100cl y barril. Su ESP es de 11,6%.",
+            rate: 5.0,
+            alcohol : 4.8,
+            image : "http://www.estrelladelevante.es/wp-content/uploads/2013/05/TClasic.png",
+            comments : [              
+              commentsArr[4]._id,
+              commentsArr[5]._id
+            ],         
+          },
+          {
+            name : "Alhambra 1925",
+            country : "Spain",
+            style : "Pale Lager",
+            description : "Reserved for the most demanding palate. Alhambra Reserva 1925 is a high quality beer crafted to perfection. With its deep, exquisite taste and exclusive masterpiece in bottle design.",
+            rate: 4.6,
+            alcohol : 6.4,
+            image : "https://www.encopadebalon.com/3542-thickbox_default/cerveza-alhambra-reserva-1925-pack-24-botellas.jpg",
             comments : [              
               commentsArr[4]._id,
               commentsArr[5]._id
