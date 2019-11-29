@@ -98,10 +98,7 @@ router.get('/bars-nearby/:lat/:long', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  if(req.user) {user = req.user}
-
-  console.log(user)
-   res.render('index', {layout: false, user});
+   res.render('index', {layout: false});
 });
 
 router.get('/results/:country/:city/:lan/:coords', (req, res, next) => {
