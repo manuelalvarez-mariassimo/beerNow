@@ -12,10 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </head>
 
-<body>
+<body class="pages profile-page">
 
     <div id="animation"></div>
-    <nav class="pages">
+
+    <nav>
         <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
         <div class="menu">
             <p>{{user.username}}</p>
@@ -26,21 +27,17 @@
         <img src="{{user.picture}}" alt="">
     </div>
 
-    <div class="contact beer-headProfile">
-        <div class="name">
+    <div class="contact beer-head">
+        <div class="name title is-2 has-text-weight-bold">
             <p>{{user.username}}</p>
         </div>
+
         <div class="location">
-            <div class="icon">
-                <i class="fas fa-map-marker-alt fa-2x"></i>
-            </div>
-            <div class="cityCountry">
-                <p>From {{user.city}}, {{user.country}}</p>
-            </div>
+            <p class="locate-message"><img src="/images/map-pin.svg" alt=""><span>From {{user.city}},{{user.country}}</span></p>
         </div>
     </div>
-    <div class="favoriteBeers">
-        <h2>Your favorite beers</h2>
+    <section class="favoriteBeers">
+        <h2 class="title is-4">Your favorite beers</h2>
         <hr>
 
         <div class="favoriteBeer">
@@ -54,14 +51,13 @@
                 </div>
             </div>
             {{/each}}
-            <a href="/beers" class="btn button is-primary is-rounded is-medium">See the complete list</a>
 
         </div>
 
-    </div>
+    </section>
 
-      <div class="favoriteBeers">
-        <h2>Your favorite bars</h2>
+    <section class="favoriteBeers">
+        <h2 class="title is-4">Your favorite bars</h2>
         <hr>
 
         <div class="favoriteBeer">
@@ -75,11 +71,10 @@
                 </div>
             </div>
             {{/each}}
-            <a href="/bars" class="btn button is-primary is-rounded is-medium">See the complete list</a>
 
         </div>
 
-    </div>
+    </section>
 
 </body>
 
