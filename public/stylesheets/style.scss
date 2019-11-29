@@ -7,7 +7,7 @@ $green: #0b7760;
 $light-green: #abd1c6;
 $light: #e8e4e6;
 $white: #ffffff;
-$yellow: #f9bc60;
+$yellow: #ecc145;
 $red: #e16162;
 $title-color: $medium-green;
 $info: $green;
@@ -31,7 +31,11 @@ body {
   background-color: $white;
 }
 
-.pages {
+main{
+  position: relative;
+}
+
+.page-result {
   background-color: $yellow;
 }
 
@@ -48,11 +52,12 @@ a {
   color: $dark-green;
 }
 
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px;
+  padding: 24px 24px 16px;
 
   #logo {
     width: 175px;
@@ -65,9 +70,15 @@ nav {
   }
 }
 
-.btn {
+
+.btn.button {
   width: 100%;
-  margin: 24px 0;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 500;
+  max-width: 400px;
+  margin: 24px auto;
+  display: block;
 }
 
 audio {
@@ -75,19 +86,31 @@ audio {
 }
 
 section {
-  padding: 32px 24px;
+  padding: 24px;
+}
+
+.page-result footer{
+  background-color: $white;
 }
 
 footer {
-  background-color: $white;
+  position: relative;
   text-align: center;
   border-top: 1px solid #ccc;
   padding: 16px 0;
 }
 
 //Helper classes
+
+.img-round img{
+  border-radius: 10px;
+}
+
+.white{background-color: $white}
+
 .beer-head {
   margin-top: 20px;
+  position: relative;
   padding-top: 10px;
 }
 
@@ -98,8 +121,12 @@ footer {
   width: 100vw;
   left: 0;
   right: 0;
-  top: -50px;
+  top: -48px;
   position: absolute;
+}
+
+.beer-head.beer-head-yellow:before{
+  background-image: url("/images/beer-head-yellow.svg");
 }
 
 /* ------ INDEX ------ */
@@ -191,6 +218,53 @@ footer {
 }
 
 /* ------ BEERS LIST ------ */
+.list-container {
+
+  .header{
+    background-color: $white;
+
+    h2.title{
+      line-height: 1.2;
+    }
+  
+    .subtitle{
+      margin-bottom: 24px;
+    }
+  }
+
+  .content{
+    background-color: $yellow;
+
+    .cards-parent{
+      margin-top: -60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      
+      .card-item{
+        width:29%;
+        margin: 0 2%;
+      }
+
+      @media (max-width: 800px){
+        .card-item{width: 50%}
+      }
+
+      @media (max-width: 600px){
+        .card-item{width: 100%}
+      }
+    }
+  }
+}
+
+
+.cards-parent{
+
+  > a {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
 .box-item {
   display: flex;
   border: 1px solid silver;
@@ -215,6 +289,7 @@ footer {
   }
 
   .img-container {
+    background-color: white;
     width: 45%;
     display: flex;
     justify-content: center;
@@ -223,23 +298,62 @@ footer {
 
   .img-container img {
     max-width: 30px;
+
   }
 }
 
-/* ------ BEERS DETAILS ------ */
+.bar-card{
+  .content{
+    margin: 8px 0 48px; 
+  }
+}
 
+
+/* ------ BEERS DETAILS ------ */
+.details-container{
+  .subtitle{
+    margin-bottom: 48px;
+  }
+
+  .comment-form-container{
+    margin: 24px 0; 
+  }
+
+  .comment-list-container{
+    border-top: 1px solid #4a4a4a;
+    padding: 32px 0;
+  }
+
+  .content{
+    background-color: $yellow;
+
+    .info{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .description p {line-height: 1.35;}
+  }
+}
 .imgDetails {
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
-  border: 2px solid silver;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  background-color: $white;
 }
 
 .likes {
   position: absolute;
-  top: 5%;
-  left: 85%;
+  top: 4%;
+  left: 88%;
+  
+  i{
+    font-size: 28px;
+  }
 }
 
 .imgDetails img {
@@ -267,10 +381,10 @@ footer {
   transform: translate(0%, 150%);
   width: 100vw;
   height: 100vh;
-  background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1574942767/wave_nq2ghx.png);
-  background-position: 0px 500px;
+  background: url(../images/wave.svg);
+  background-position: 0px 600px;
   background-repeat: repeat-x;
-  animation: filling 15s ease-in-out;
+  animation: filling 15s ease-in-out infinite;
   overflow: hidden;
 }
 
@@ -284,10 +398,10 @@ footer {
 }
 
 .contact {
-background: white;
-margin-bottom: 15%;
-display: flex;
-flex-direction: column;
+  background: white;
+  margin-bottom: 15%;
+  display: flex;
+  flex-direction: column;
 }
 
 .imgContact {
@@ -313,32 +427,32 @@ flex-direction: column;
   justify-content: center;
 }
 
-.favoriteBeers{
+.favoriteBeers {
   background: white;
 }
 
-.beer-headProfile{
+.beer-headProfile {
   position: relative;
   margin-top: 20px;
   padding-top: 10px;
 }
 
-.beer-headProfile:before{
+.beer-headProfile:before {
   content: "";
-  background-image: url('/images/beer-head.svg');
+  background-image: url("/images/beer-head.svg");
   height: 80px;
   width: 100vw;
   left: 0;
   right: 0;
   top: -11vh;
-  position: absolute
+  position: absolute;
 }
 
 .favoriteBox {
   display: flex;
   flex-direction: column;
   width: 100px;
-border: 1px solid red ;
+  border: 1px solid red;
 }
 
 .imgFavoriteBeers img {
@@ -356,8 +470,7 @@ border: 1px solid red ;
   position: absolute;
   border-radius: 50%;
   // background: url(../images/beerBubble.png) no-repeat;
-  background: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, 0.3);
   background-size: contain;
   transition: all 9s;
 }
-

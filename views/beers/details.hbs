@@ -1,46 +1,60 @@
-<div class="detailsBeer">
-  <div class="description">
-    <h1>{{name}}</h1>
-    <p>{{style}}</p>
-  </div>
-  <div class="imgDetails">
-    <div class="likes">
-      <button id="likes">
-        <i class="far fa-heart fa-3x"></i>
-      </button>
 
+<div class="details-container container">
+  <section class="header">
+    <div class="container">
+      <h2 class="title is-2 has-text-weight-bold">{{name}}</h2>
+      <p class="subtitle is-5">{{style}}</p>
     </div>
-    <img src="{{image}}" alt="">
-  </div>
-  <div class="rate">
-    <div class="stars">
-      XXXXXXX
-    </div>
-    <div class="alcohol">
-      <p>Alc. {{alcohol}}% vol.</p>
-    </div>
-  </div>
-  <div class="beerInfo">
-    <p>{{description}}</p>
-  </div>
-  <form action="/beers/details/{{_id}}" method="post">
-    <div class="Comment">
-      <p>What do you think?</p>
-      <textarea name="comment" id="" cols="30" rows="10"></textarea>
-      <div class="rateSubmit">
-        <div class="stars">
-          XXXXXXX
-        </div>
-        <div class="submit">
-          <button>SUBMIT</button>
-        </div>
+  </section>
+
+  <section class="content beer-head beer-head-yellow">
+    <div class="img-round imgDetails">
+      <div class="likes">
+        <i class="far fa-heart fa-3x"></i>
       </div>
-      <hr>
+      <img src="{{image}}" alt="">
     </div>
-  </form>
-  <div class="beerComments">
-    <p>14 Comments on this beer</p>
-  </div>
+
+
+
+    <div class="container comment-form-container">
+      <div class="info">
+        <p class="subtitle is-5">Rate <span class="has-text-weight-semibold">{{rate}}</span></p>
+        <p class="subtitle is-5">Alc. <span class="has-text-weight-semibold">{{alcohol}}</span>% vol.</p>
+      </div>
+
+      <div class="description">
+        <p class="subtitle">
+          {{description}}
+        </p>
+      </div>
+      <form action="/bars/details/{{_id}}" method="post">
+        <p class="subtitle is-4 has-text-weight-semibold">What do you think?</p>
+
+        <div class="Comment">
+          <div class="field">
+            <div class="control">
+              <textarea name="comment" class="textarea is-small" placeholder="Leave your comment"></textarea>
+            </div>
+          </div>
+          <div class="rateSubmit">
+            <div class="stars">Rate</div>
+            <div class="submit">
+              <button class="button is-info is-small">SUBMIT</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="beerComments comment-list-container">
+      <p class="subtitle is-5 has-text-weight-semibold">{{comments.length}} comments on this bar</p>
+      {{#if comments}}
+      {{#each comments}}
+      <p><b>Someone nice said</b> {{comment}}</p>
+      {{/each}}
+
+      {{/if}}
+    </div>
 
 <input type="hidden" value="{{_id}}">
 
@@ -51,4 +65,9 @@
 send("POST", "/beers/details/:id", returnFormData( {{_id}} ), 'html')
 
 
+<<<<<<< HEAD
 </script>
+=======
+  </section>
+</div>
+>>>>>>> master

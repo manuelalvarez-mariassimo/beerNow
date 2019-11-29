@@ -4,6 +4,8 @@ const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
 const Beer  = require("../models/Beer");
 const axios = require("axios").default
+let username;
+
 
 // Google apis
 let apiUrl;
@@ -18,6 +20,7 @@ const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
 
 // Instantiates a client
 const translationClient = new TranslationServiceClient();
+
 async function translateText(targetLanguage) {
   let sourceLanguage;
 
@@ -39,6 +42,7 @@ async function translateText(targetLanguage) {
 
   // Run request
   const [response] = await translationClient.translateText(request);
+  console.log(response)
 
   let transText;
 
@@ -47,9 +51,13 @@ async function translateText(targetLanguage) {
   }
 
     // Create audio Text to Speach
-    main(transText, targetLanguage)
+    await main(transText, targetLanguage)
     return transText;
-}
+    // .then(()=>{
+      
+    //   return transText;
+    // })
+  }
 
 
 // Google Text to Speech Api
@@ -85,7 +93,6 @@ async function main(textParam, languageCodeParam) {
 /* Routes */
 router.get('/bars-nearby/:lat/:long', (req, res, next) => {
   // let coords = req.params.coords;
-
   axios.get(
     `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.params.lat},${req.params.long}&radius=1500&type=bar&opennow=true&key=AIzaSyD_zFC1JIj0EgKS8Fp0GZw3MiXR1wiDxEg`
   )
@@ -96,7 +103,8 @@ router.get('/bars-nearby/:lat/:long', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-   res.render('index', {layout: false});
+  if(req.user) {username = req.user}
+   res.render('index', {layout: false, username});
 });
 
 router.get('/results/:country/:city/:lan/:coords', (req, res, next) => {
@@ -105,25 +113,19 @@ router.get('/results/:country/:city/:lan/:coords', (req, res, next) => {
   let country = req.params.country
   let city = req.params.city
 
-
   translateText(lan)
   .then(result => {
     apiUrl=`https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 
     Beer.find({country}).then(beerList=> {
-      res.render("results", {apiUrl, result, beerList, coords, country, city});
+      res.render("results", {
+        layout: false, apiUrl, result, beerList, coords, country, city
+      });
     })
   })
 
   .catch(err => {throw err})
 });
 
-router.post("/results", (req, res, next) => {
-  console.log(req.body)
-})
-
-router.get('/landing', (req, res, next) => {
-  res.render('landing');
-});
 
 module.exports = router;

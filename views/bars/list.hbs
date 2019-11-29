@@ -1,16 +1,23 @@
-<h2>Una birra, per favore!</h2>
-
-<p>There is {{bars.length}} local beers for you</p>
-
-
-{{#each bars}}
-<a href="/bars/details/{{this._id}}">
-    <div class="box-item">
-        <p>{{this.name}}</p>
-        <p>{{this.comments}}</p>
-        <p>{{this.rate}}</p>
-        <p>{{this.address}}</p>
-        <p>{{this.location}}</p>
-    </div>
-</a>
-{{/each}}
+<div class="list-container bn-container">
+    <section class="header">
+        <div class="container">
+            <h2 class="title is-2 has-text-weight-bold">Bars</h2>
+            <p class="subtitle is-4">There are {{bars.length}} bars near you</p>
+        </div>
+    </section>
+    <section class="content beer-head beer-head-yellow">
+        <div class="container  cards-parent">
+            {{#each bars}}
+            <a class="card-item bar-card" href="/bars/{{this._id}}">
+                <div class="img-round">
+                    <img src="https://anamericaninrome.com/wp/wp-content/uploads/2017/06/caffe-corretto-3-1024x683.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p class="title is-4">{{this.name}}</p>
+                    <p class="subtitle">{{this.address}}</p>
+                </div>
+            </a>
+            {{/each}}
+        </div>
+    </section>
+</div>

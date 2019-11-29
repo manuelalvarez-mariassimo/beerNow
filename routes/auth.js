@@ -3,7 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 const Bar = require("../models/Bar");
-const axios = require("axios").default
+
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
