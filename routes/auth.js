@@ -39,7 +39,7 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", {layout: false});
 });
 
 
