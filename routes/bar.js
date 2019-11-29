@@ -2,14 +2,40 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios").default;
 const Bar = require("../models/Bar");
+const Comment = require("../models/Comments");
+const Beer = require("../models/Beer");
 
 /* GET home page */
 router.get("/:id", (req, res, next) => {
-  res.render("/bars/details");
+  Bar.findById(req.params.id)
+    .populate([{
+      path: "comments",
+      model : "Comment"
+    }, {
+      // todo
+      path : "author",
+      model : "User"
+    }])
+    .then(barFound => {
+      console.log(barFound);
+      res.render("bars/details", barFound);
+    });
 });
 
-router.put("/:id/update", (req, res, next) => {
-  res.render("/bars/details");
+router.post("/details/:id", (req, res, next) => {
+  let barID = req.params.id;
+  Comment.create({
+    comment: req.body.comment,
+    author: req.user._id
+  })
+    .then(comment => {
+      return Bar.findByIdAndUpdate(
+        req.params.id,
+        { $push: { comments: comment._id } },
+        { new: true }
+      );
+    })
+    .then(() => res.redirect(`/bars/${barID}`));
 });
 
 router.get("/:lat/:long", (req, res, next) => {

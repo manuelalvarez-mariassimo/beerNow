@@ -7157,6 +7157,9 @@ footer {
   border-top: 1px solid #ccc;
   padding: 16px 0; }
 
+.img-round img {
+  border-radius: 10px; }
+
 .white {
   background-color: #ffffff; }
 
@@ -7289,13 +7292,23 @@ footer {
   .box-item .img-container img {
     max-width: 30px; }
 
-.bar-card .img-round img {
-  border-radius: 10px; }
-
 .bar-card .content {
   margin: 8px 0 48px; }
 
 /* ------ BEERS DETAILS ------ */
+.details-container .subtitle {
+  margin-bottom: 48px; }
+
+.details-container .comment-form-container {
+  margin: 24px 0; }
+
+.details-container .comment-list-container {
+  border-top: 1px solid #4a4a4a;
+  padding: 32px 0; }
+
+.details-container .content {
+  background-color: #ecc145; }
+
 .imgDetails {
   display: flex;
   position: relative;

@@ -1,0 +1,46 @@
+<div class="details-container container">
+    <section class="header">
+        <div class="container">
+            <h2 class="title is-2 has-text-weight-bold">{{name}}</h2>
+            <p class="subtitle is-5">{{address}}</p>
+        </div>
+    </section>
+
+    <section class="content beer-head beer-head-yellow">
+        <div class="img-round">
+            <img src="https://anamericaninrome.com/wp/wp-content/uploads/2017/06/caffe-corretto-3-1024x683.jpg" alt="">
+        </div>
+
+        <div class="container comment-form-container">
+            <p class="subtitle is-4 has-text-weight-semibold">What do you think?</p>
+            {{!-- todo --}}
+            <form action="/bars/details/{{_id}}" method="post">
+                <div class="Comment">
+                    <div class="field">
+                        <div class="control">
+                            <textarea name="comment" class="textarea is-small"
+                                placeholder="Leave your comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="rateSubmit">
+                        <div class="stars">Rate</div>
+                        <div class="submit">
+                            <button class="button is-info is-small">SUBMIT</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="beerComments comment-list-container">
+            <p class="subtitle is-5 has-text-weight-semibold">{{comments.length}} comments on this bar</p>
+            {{#if comments}}
+            {{#each comments}}
+            <p><b>Someone nice said</b> {{comment}}</p>
+            {{/each}}
+
+            {{/if}}
+        </div>
+
+
+    </section>
+</div>

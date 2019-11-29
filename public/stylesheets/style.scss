@@ -93,6 +93,11 @@ footer {
 }
 
 //Helper classes
+
+.img-round img{
+  border-radius: 10px;
+}
+
 .white{background-color: $white}
 
 .beer-head {
@@ -279,18 +284,34 @@ footer {
   }
 }
 
-
 .bar-card{
-  .img-round img{
-    border-radius: 10px;
-  }
-
   .content{
     margin: 8px 0 48px; 
   }
 }
-/* ------ BEERS DETAILS ------ */
 
+
+/* ------ BEERS DETAILS ------ */
+.details-container{
+  .subtitle{
+    margin-bottom: 48px;
+  }
+
+  .comment-form-container{
+    margin: 24px 0; 
+  }
+
+  .comment-list-container{
+    border-top: 1px solid #4a4a4a;
+    padding: 32px 0;
+  }
+
+
+
+  .content{
+    background-color: $yellow;
+  }
+}
 .imgDetails {
   display: flex;
   position: relative;

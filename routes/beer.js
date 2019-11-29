@@ -41,8 +41,4 @@ router.post("/details/:id", (req, res, next) => {
 });
 
 
-router.put('/:id/update', (req, res, next) => {
-  res.render('beers/details');
-});
-
 module.exports = router;
