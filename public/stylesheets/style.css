@@ -7154,6 +7154,9 @@ audio {
 section {
   padding: 24px; }
 
+.page-result footer {
+  background-color: #ffffff; }
+
 footer {
   position: relative;
   text-align: center;
