@@ -6,24 +6,6 @@ const Beer  = require("../models/Beer");
 const axios = require("axios").default
 let username;
 
-// function showUsers(isUser) {
-//   let user;
-
-//   if (isUser) {
-//     user = {
-//       name : isUser.username,
-//       path : "profile",
-//     }
-//   } else {
-//     user = {
-//       name : "Guest",
-//       path : "login"
-//     }
-//   }
-
-//   return user;
-// }
-
 
 // Google apis
 let apiUrl;
