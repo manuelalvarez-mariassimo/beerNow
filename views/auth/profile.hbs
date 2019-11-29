@@ -33,26 +33,28 @@
         </div>
 
         <div class="location">
-            <p class="locate-message"><img src="/images/map-pin.svg" alt=""><span>From {{user.city}},{{user.country}}</span></p>
+            <p class="locate-message"><img src="/images/map-pin.svg" alt=""><span>From
+                    {{user.city}},{{user.country}}</span></p>
         </div>
     </div>
     <section class="favoriteBeers">
         <h2 class="title is-4">Your favorite beers</h2>
         <hr>
 
-        <div class="favoriteBeer">
-            {{#each user.favoriteBeers}}
-            <div class="favoriteBox">
-                <div class="img-beer">
+        {{#each user.favoriteBeers}}
+        <a href="/beers/details/{{this._id}}">
+            <div class="box-item">
+                <div class="img-container">
                     <img src="{{this.image}}" alt="">
                 </div>
-                <div class="name">
-                    <p>{{this.name}}</p>
+                <div class="description">
+                    <h2 class="title is-4">{{this.name}}</h2>
+                    <h3 class="subtitle is-5">{{this.style}}</h3>
+                    <p class="alc has-text-weight-semibold">ALC. {{this.alcohol}}% VOL</p>
                 </div>
             </div>
-            {{/each}}
-
-        </div>
+        </a>
+        {{/each}}
 
     </section>
 
@@ -60,19 +62,19 @@
         <h2 class="title is-4">Your favorite bars</h2>
         <hr>
 
-        <div class="favoriteBeer">
-            {{#each user.favoriteBars}}
-            <div class="favoriteBox">
-                <div class="img-beer">
-                    <img src="{{this.image}}" alt="">
-                </div>
-                <div class="name">
-                    <p>{{this.name}}</p>
-                </div>
-            </div>
-            {{/each}}
 
-        </div>
+        {{#each user.favoriteBars}}
+        <a class="card-item bar-card" href="/bars/{{this._id}}">
+            <div class="img-round">
+                <img src="https://anamericaninrome.com/wp/wp-content/uploads/2017/06/caffe-corretto-3-1024x683.jpg"
+                    alt="">
+            </div>
+            <div class="content">
+                <p class="title is-4">{{this.name}}</p>
+                <p class="subtitle">{{this.address}}</p>
+            </div>
+        </a>
+        {{/each}}
 
     </section>
 
