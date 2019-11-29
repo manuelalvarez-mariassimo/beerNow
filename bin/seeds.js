@@ -231,10 +231,10 @@ return User.deleteMany()
             name : "Heineken",
             country : "Spain",
             style : "Lager - Euro Pale",
-            description : "Born in 1972 as “Especial Rivera”, it would soon become Company’s most representative beer.  Brewed by Hijos de Rivera’s Brewmasters in the only Company’s brewery placed in A Coruña. It takes a whole month to be brewed, half of it inside the maturing tanks. Golden color. Clean and bright. Excellent aromatic balance between malts and hops. Lightly floral and herbal flavors, with a moderate warm mouthfeel, and an intense hoppy bitter taste that lingers in the mouth.",
+            description : "Heineken is a 5% ABV euro pale lager, made by Heineken International since 1873. It is available in a 4.3% alcohol by volume, in countries such as Ireland. It is the flagship product of the company and is made of purified water, malted barley, hops, and yeast.",
             rate: 3,
             alcohol : 4.3,
-            image : "Heineken is a 5% ABV euro pale lager, made by Heineken International since 1873. It is available in a 4.3% alcohol by volume, in countries such as Ireland. It is the flagship product of the company and is made of purified water, malted barley, hops, and yeast.",
+            image : "https://www.heinekenespana.es/wp-content/uploads/2019/03/hnk.png",
             comments : [              
               commentsArr[4]._id,
               commentsArr[5]._id

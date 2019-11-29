@@ -4,7 +4,6 @@ const Translate = require('@google-cloud/translate');
 const textToSpeech = require('@google-cloud/text-to-speech');
 const Beer  = require("../models/Beer");
 const axios = require("axios").default
-let username;
 
 
 // Google apis
@@ -99,8 +98,10 @@ router.get('/bars-nearby/:lat/:long', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  if(req.user) {username = req.user}
-   res.render('index', {layout: false, username});
+  if(req.user) {user = req.user}
+
+  console.log(user)
+   res.render('index', {layout: false, user});
 });
 
 router.get('/results/:country/:city/:lan/:coords', (req, res, next) => {
