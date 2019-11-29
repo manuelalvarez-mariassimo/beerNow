@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Beer = require("../models/Beer.js");
+const User = require("../models/User.js");
 const Comment = require("../models/Comments.js");
 
 /* GET home page */
@@ -48,6 +49,16 @@ router.post("/details/:id", (req, res, next) => {
       );
     })
     .then(() => res.redirect("/"));
+});
+
+router.post("/favorites/", (req, res, next) => {
+  console.log(req.body)
+  User.findByIdAndUpdate(req.user._id,{$push:{favoriteBeers:req.body.url}},{new:true})
+  .then(user => {
+    console.log(user)
+  })
+  .catch(err => console.log(err));
+
 });
 
 module.exports = router;

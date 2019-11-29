@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require("axios").default;
 const Bar = require("../models/Bar");
 const Comment = require("../models/Comments");
-const Beer = require("../models/Beer");
+const User = require("../models/User");
 
 /* GET home page */
 router.get("/:id", (req, res, next) => {
@@ -17,7 +17,7 @@ router.get("/:id", (req, res, next) => {
       model : "User"
     }])
     .then(barFound => {
-      res.render("bars/details", {barFound: barFound ,user: req.user});
+      res.render("bars/details", {bars: barFound ,user: req.user});
     });
 });
 
@@ -76,6 +76,15 @@ router.get("/:lat/:long", (req, res, next) => {
         })
         .catch(err => console.log(err));
     });
+});
+
+router.post("/favorites/", (req, res, next) => {
+  User.findByIdAndUpdate(req.user._id,{$push:{favoriteBars:req.body.url}},{new:true})
+  .then(user => {
+    console.log(user)
+  })
+  .catch(err => console.log(err));
+
 });
 
 module.exports = router;

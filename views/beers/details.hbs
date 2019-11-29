@@ -2,33 +2,33 @@
 <div class="details-container container">
   <section class="header">
     <div class="container">
-      <h2 class="title is-2 has-text-weight-bold">{{name}}</h2>
-      <p class="subtitle is-5">{{style}}</p>
+      <h2 class="title is-2 has-text-weight-bold">{{beers.name}}</h2>
+      <p class="subtitle is-5">{{beers.style}}</p>
     </div>
   </section>
 
   <section class="content beer-head">
     <div class="img-round imgDetails">
       <div class="likes">
-        <i class="far fa-heart fa-3x"></i>
+        <i id="likes" class="far fa-heart fa-3x"></i>
       </div>
-      <img src="{{image}}" alt="">
+      <img src="{{beers.image}}" alt="">
     </div>
 
 
 
     <div class="container comment-form-container">
       <div class="info">
-        <p class="subtitle is-5">Rate <span class="has-text-weight-semibold">{{rate}}</span></p>
-        <p class="subtitle is-5">Alc. <span class="has-text-weight-semibold">{{alcohol}}</span>% vol.</p>
+        <p class="subtitle is-5">Rate <span class="has-text-weight-semibold">{{beers.rate}}</span></p>
+        <p class="subtitle is-5">Alc. <span class="has-text-weight-semibold">{{beers.alcohol}}</span>% vol.</p>
       </div>
 
       <div class="description">
         <p class="subtitle">
-          {{description}}
+          {{beers.description}}
         </p>
       </div>
-      <form action="/bars/details/{{_id}}" method="post">
+      <form action="/beers/details/{{beers._id}}" method="post">
         <p class="subtitle is-4 has-text-weight-semibold">What do you think?</p>
 
         <div class="Comment">
@@ -47,22 +47,34 @@
       </form>
     </div>
     <div class="beerComments comment-list-container">
-      <p class="subtitle is-5 has-text-weight-semibold">{{comments.length}} comments on this bar</p>
-      {{#if comments}}
-      {{#each comments}}
-      <p><b>Someone nice said</b> {{comment}}</p>
+      <p class="subtitle is-5 has-text-weight-semibold">{{beers.comments.length}} comments on this bar</p>
+      {{#if beers.comments}}
+      {{#each beers.comments}}
+      <p><b>Someone nice said</b> {{this.comment}}</p>
       {{/each}}
 
       {{/if}}
     </div>
 
-<input type="hidden" value="{{_id}}">
+<input type="hidden" value="{{beers._id}}">
 
 </div>
 
 <script>
 
-send("POST", "/beers/details/:id", returnFormData( {{_id}} ), 'html')
+document.getElementById("likes").onclick = () => {
+  console.log("hola")
+  let url = window.location.href
 
+
+
+  url = url.split("/")
+  url = url.pop()
+
+  axios.post(`http://localhost:3000/beers/favorites/`, {url: url})
+  .then(a=>console.log(a))
+  .catch(a=>console.log(a))
+
+}
 
 </script>

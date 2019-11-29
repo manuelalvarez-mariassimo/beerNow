@@ -1,25 +1,28 @@
 <div class="details-container container">
     <section class="header">
         <div class="container">
-            <h2 class="title is-2 has-text-weight-bold">{{name}}</h2>
-            <p class="subtitle is-5">{{address}}</p>
+            <h2 class="title is-2 has-text-weight-bold">{{bars.name}}</h2>
+            <p class="subtitle is-5">{{bars.address}}</p>
         </div>
     </section>
 
     <section class="content beer-head">
         <div class="img-round">
+            <div class="likesBars">
+                <i id="likes" class="far fa-heart fa-3x"></i>
+            </div>
             <img src="https://anamericaninrome.com/wp/wp-content/uploads/2017/06/caffe-corretto-3-1024x683.jpg" alt="">
             <input type="hidden" id="bar-coords" value="{{location.coordinates}}">
             <a id="google-maps-link" target="_blank" class="btn button is-info is-rounded is-medium">Take me
                 there</a>
         </div>
 
-        
+
 
         <div class="container comment-form-container">
             <p class="subtitle is-4 has-text-weight-semibold">What do you think?</p>
             {{!-- todo --}}
-            <form action="/bars/details/{{_id}}" method="post">
+            <form action="/bars/details/{{bars._id}}" method="post">
                 <div class="Comment">
                     <div class="field">
                         <div class="control">
@@ -37,10 +40,10 @@
             </form>
         </div>
         <div class="beerComments comment-list-container">
-            <p class="subtitle is-5 has-text-weight-semibold">{{comments.length}} comments on this bar</p>
-            {{#if comments}}
-            {{#each comments}}
-            <p><b>Someone nice said</b> {{comment}}</p>
+            <p class="subtitle is-5 has-text-weight-semibold">{{bars.comments.length}} comments on this bar</p>
+            {{#if bars.comments}}
+            {{#each bars.comments}}
+            <p><b>Someone nice said</b> {{this.comment}}</p>
             {{/each}}
 
             {{/if}}
@@ -53,4 +56,21 @@
 <script>
     let barCoords = document.querySelector("#bar-coords").value
     document.querySelector("#google-maps-link").setAttribute('href', `https://maps.google.com/?q=${barCoords}`)
+
+
+    document.getElementById("likes").onclick = () => {
+        let url = window.location.href
+
+
+
+        url = url.split("/")
+        url = url.pop()
+
+        axios.post(`http://localhost:3000/bars/favorites/`, { url: url })
+            .then(a => console.log(a))
+            .catch(a => console.log(a))
+
+    }
+
+
 </script>

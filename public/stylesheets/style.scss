@@ -588,3 +588,14 @@ text-align: center;
   height: 100vh;
   background: white;
 }
+
+.likesBars {
+  position: absolute;
+  top: 4%;
+  left: 82%;
+  
+  i{
+    font-size: 28px;
+    color: white;
+  }
+}

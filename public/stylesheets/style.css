@@ -7537,4 +7537,12 @@ footer {
   height: 100vh;
   background: white; }
 
+.likesBars {
+  position: absolute;
+  top: 4%;
+  left: 82%; }
+  .likesBars i {
+    font-size: 28px;
+    color: white; }
+
 /*# sourceMappingURL=style.css.map */

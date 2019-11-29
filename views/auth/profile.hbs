@@ -47,10 +47,10 @@
             {{#each user.favoriteBeers}}
             <div class="favoriteBox">
                 <div class="img-beer">
-                    <img src="{{image}}" alt="">
+                    <img src="{{this.image}}" alt="">
                 </div>
                 <div class="name">
-                    <p>{{name}}</p>
+                    <p>{{this.name}}</p>
                 </div>
             </div>
             {{/each}}
@@ -68,10 +68,10 @@
             {{#each user.favoriteBars}}
             <div class="favoriteBox">
                 <div class="img-beer">
-                    <img src="{{image}}" alt="">
+                    <img src="{{this.image}}" alt="">
                 </div>
                 <div class="name">
-                    <p>{{name}}</p>
+                    <p>{{this.name}}</p>
                 </div>
             </div>
             {{/each}}

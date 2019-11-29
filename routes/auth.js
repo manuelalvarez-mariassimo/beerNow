@@ -23,7 +23,7 @@ router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
       .populate("favoriteBeers")
       .then(user => {
         console.log(user);
-        res.render("auth/profile", { user: req.user, layout: false });
+        res.render("auth/profile", { user: user, layout: false });
       })
       .catch(err => console.log(err));
 });
