@@ -1,29 +1,93 @@
-<h3>Log in with an existing account</h3>
+<!DOCTYPE html>
+<html lang="en">
 
-<a href="/auth/google"><i class="fab fa-google fa-2x"></i></a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css"> --}}
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="https://kit.fontawesome.com/9c01b07d37.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+</head>
+
+<body class="page-result">
+  <nav class="container">
+    <a href="/"><img src="/images/beer-now.png" alt="BeerNow Logo" id="logo"></a>
+    <div class="menu">
+      <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Signup</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="results-container bn-container">
+      <section id="translate">
+        <div class="container">
+
+          <h3 class="text-login login-bold">Log in with an existing account</h3>
+
+          <div class="googleIcon">
+            <a class="text-login" href="/auth/google"><i class="fab fa-google fa-2x"></i></a>
+          </div>
+
+        </div>
+      </section>
+
+      <br><br>
+      <section id="bars" class="beer-headLogin">
+        <div class="container">
+          <h3 class="text-login textOrAccount">or login with your account</h3>
+          <form action="/auth/login" method="POST" id="form-container">
+            <div class="username">
+              <label for="username">Username</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="username" class="input" type="text" name="username" placeholder="Username">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+            </div>
 
 
-<h3>or login with your account</h3>
+            <br>
 
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="Username">
+            <div class="password">
+              <label for="password">Password</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="password" class="input" type="password" name="password" placeholder="Password">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+            </div>
 
-  <br><br>
+            <br>
+            {{#if message }}
+            <div class="error-message">{{ message }}</div>
+            {{/if}}
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
 
-  <br><br>
+            <button id="bars-link" href="" class="btn button is-primary is-rounded is-medium">Log in now</button>
 
-  <button>Login</button>
+            <p class="account-message">
+              Don't have an account yet?
+              <a href="/auth/signup" class="text-signup">Signup</a>
+            </p>
+          </form>
+        </div>
+      </section>
 
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
-  </p>
-</form>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <a>BeerNow © 2019</a>
+  </footer>
+</body>
+
+</html>
