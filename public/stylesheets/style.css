@@ -7130,6 +7130,7 @@ a {
   color: #001e1d; }
 
 nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7142,7 +7143,6 @@ nav {
 .btn.button {
   width: 100%;
   text-transform: uppercase;
-  font-size: 1em;
   font-weight: 500;
   max-width: 400px;
   margin: 24px auto;
@@ -7248,6 +7248,10 @@ footer {
 .results-container #beers {
   background-color: #ffffff;
   position: relative; }
+
+.results-container #beers a {
+  margin-bottom: 16px;
+  display: block; }
 
 /* ------ BEERS LIST ------ */
 .list-container .header {
