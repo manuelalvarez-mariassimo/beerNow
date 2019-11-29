@@ -91,8 +91,32 @@ section {
   padding: 24px;
 }
 
+.pages body{
+  background-color: $white;
+}
+.pages nav{
+  background-color: $yellow;
+}
+.pages .list-container .header,
+.pages .details-container .header {
+  background-color: $yellow;
+  margin-top: -1px;
+}
+
 .page-result footer{
   background-color: $white;
+}
+
+.page-result{
+  background-color: $white;
+}
+
+.page-result nav{
+  background-color: $yellow;
+}
+
+.page-result .results-container{
+  background-color: $yellow;
 }
 
 footer {
@@ -124,7 +148,7 @@ footer {
   width: 100vw;
   left: 0;
   right: 0;
-  top: -48px;
+  top: -49px;
   position: absolute;
 }
 
@@ -196,6 +220,10 @@ footer {
     margin: 32px 0;
   }
 
+  #translate{
+    margin-top: -1px;
+  }
+  
   #map {
     height: 400px;
   }
@@ -243,7 +271,7 @@ footer {
   }
 
   .content{
-    background-color: $yellow;
+    background-color: $white;
 
     .cards-parent{
       margin-top: -60px;
@@ -335,7 +363,7 @@ footer {
   }
 
   .content{
-    background-color: $yellow;
+    background-color: $white;
 
     .info{
       display: flex;
@@ -559,8 +587,4 @@ text-align: center;
   width: 100vw;
   height: 100vh;
   background: white;
-}
-
-.carlos img {
-
 }

@@ -16,9 +16,6 @@ router.get("/login", (req, res, next) => {
 });
 
 router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  
-  // if (req.session.currentUser) {
-  //   console.log(req.session.currentUser)
 
     Bar.find().then(b => console.log(b));
     User.findById(req.params.id)
@@ -26,13 +23,9 @@ router.get("/profile/:id", ensureLogin.ensureLoggedIn(), (req, res, next) => {
       .populate("favoriteBeers")
       .then(user => {
         console.log(user);
-        // res.json(user.favoriteBeers[0].name)
         res.render("auth/profile", { user: req.user, layout: false });
       })
       .catch(err => console.log(err));
-  // } else {
-  //   res.redirect("/");
-  // }  
 });
 
 
