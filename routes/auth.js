@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require("../models/User");
 const Bar = require("../models/Bar");
 
+
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 // Bcrypt to encrypt passwords
@@ -40,6 +41,8 @@ router.post("/login", passport.authenticate("local", {
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
+
+
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
@@ -135,8 +138,8 @@ router.get("/google",
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/",
-    failureRedirect: "/login" // here you would redirect to the login page using traditional login approach
+    successRedirect: "/index",
+    failureRedirect: "/" // here you would redirect to the login page using traditional login approach
   })
 );
 

@@ -56,6 +56,18 @@
       {{/if}}
     </div>
 
+<input type="hidden" value="{{_id}}">
 
+</div>
+
+<script>
+
+send("POST", "/beers/details/:id", returnFormData( {{_id}} ), 'html')
+
+
+<<<<<<< HEAD
+</script>
+=======
   </section>
 </div>
+>>>>>>> master
