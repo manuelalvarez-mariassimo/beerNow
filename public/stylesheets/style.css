@@ -7368,7 +7368,7 @@ footer {
   transform: translate(0%, 150%);
   width: 100vw;
   height: 100vh;
-  background: url(../images/wave.svg);
+  background: url(https://res.cloudinary.com/duczhwe2w/image/upload/v1575017806/wave_u6hk3p.png);
   background-position: 0px 600px;
   background-repeat: repeat-x;
   animation: filling 15s ease-in-out infinite;
